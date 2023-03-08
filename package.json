@@ -8,6 +8,9 @@
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
+    "bundle": "npx projen bundle",
+    "bundle:funcs/cost-reporter.lambda": "npx projen bundle:funcs/cost-reporter.lambda",
+    "bundle:funcs/cost-reporter.lambda:watch": "npx projen bundle:funcs/cost-reporter.lambda:watch",
     "clobber": "npx projen clobber",
     "compat": "npx projen compat",
     "compile": "npx projen compile",
@@ -35,12 +38,18 @@
     "organization": false
   },
   "devDependencies": {
+    "@aws-sdk/client-cost-explorer": "^3.282.0",
+    "@types/aws-lambda": "^8.10.111",
     "@types/jest": "^27",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
+    "@yicr/jest-serializer-cdk-asset": "^0.1.36",
     "aws-cdk-lib": "2.1.0",
+    "aws-sdk-client-mock": "^2.1.0",
+    "aws-sdk-client-mock-jest": "^2.1.0",
     "constructs": "10.0.5",
+    "esbuild": "^0.17.11",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.7",
     "eslint-import-resolver-typescript": "^3.5.3",
@@ -59,8 +68,12 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
+    "@yicr/secure-bucket": "^0.1.37",
     "aws-cdk-lib": "^2.1.0",
     "constructs": "^10.0.5"
+  },
+  "dependencies": {
+    "@yicr/secure-bucket": "^0.1.37"
   },
   "keywords": [
     "aws",

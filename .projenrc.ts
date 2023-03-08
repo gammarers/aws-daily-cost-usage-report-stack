@@ -9,9 +9,18 @@ const project = new awscdk.AwsCdkConstructLibrary({
   keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports', 's3', 'bucket'],
   projenrcTs: true,
   repositoryUrl: 'https://github.com/yicr/cost-usage-reports.git',
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
+  deps: [
+    '@yicr/secure-bucket',
+  ],
+  devDeps: [
+    'aws-sdk-client-mock',
+    'aws-sdk-client-mock-jest',
+    '@aws-sdk/client-cost-explorer',
+    '@types/aws-lambda',
+    '@yicr/jest-serializer-cdk-asset',
+  ],
+  peerDeps: [
+    '@yicr/secure-bucket',
+  ],
 });
 project.synth();

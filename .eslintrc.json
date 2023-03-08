@@ -151,7 +151,8 @@
           "**/build-tools/**",
           "**/projenrc/**",
           ".projenrc.ts",
-          "projenrc/**/*.ts"
+          "projenrc/**/*.ts",
+          "src/funcs/cost-reporter.lambda.ts"
         ],
         "optionalDependencies": false,
         "peerDependencies": true
