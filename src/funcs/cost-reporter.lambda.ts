@@ -29,18 +29,17 @@ const ceClient = new CostExplorerClient({
   region: 'us-east-1',
 });
 
-export const handler = async (event: EventInput, context: Context): Promise<void | Error> => {
+export const handler = async (event: EventInput, context: Context): Promise<string | Error> => {
   console.log(`Event: ${JSON.stringify(event, null, 2)}`);
   console.log(`Context: ${JSON.stringify(context, null, 2)}`);
 
-  //callback(null, {});
   // 👇Calculate Date Range
-  const dateRang: DateRange = (() => {
+  const dateRange: DateRange = (() => {
     const dateFormatString = (date: Date): string => {
       return (date.getFullYear()) + '-' + ('00' + (date.getMonth() + 1)).slice(-2) + '-' + ('00' + (date.getDate())).slice(-2);
     };
 
-    const now = new Date();
+    const now = new Date(Date.now());
     if (now.getDate() === 1) {
       // Last month
       return {
@@ -54,13 +53,14 @@ export const handler = async (event: EventInput, context: Context): Promise<void
       end: dateFormatString(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1)),
     };
   })();
-  console.log(`DateRange::${JSON.stringify(dateRang, null, 2)}`);
+  console.log(`DateRange::${JSON.stringify(dateRange, null, 2)}`);
 
+  // 👇Get Total Billing
   const totalBilling: TotalCost | undefined = await (async () => {
     const input: GetCostAndUsageCommandInput = {
       TimePeriod: {
-        Start: dateRang.start,
-        End: dateRang.end,
+        Start: dateRange.start,
+        End: dateRange.end,
       },
       Granularity: 'MONTHLY',
       Metrics: [
@@ -88,11 +88,12 @@ export const handler = async (event: EventInput, context: Context): Promise<void
       });
   })();
 
+  // 👇Get Service Billings
   const serviceBillings: ServiceCost[] | undefined = await (async () => {
     const input: GetCostAndUsageCommandInput = {
       TimePeriod: {
-        Start: dateRang.start,
-        End: dateRang.end,
+        Start: dateRange.start,
+        End: dateRange.end,
       },
       Granularity: 'MONTHLY',
       Metrics: [
@@ -131,5 +132,7 @@ export const handler = async (event: EventInput, context: Context): Promise<void
 
   console.log(`TotalBilling: ${JSON.stringify(totalBilling, null, 2)}`);
   console.log(`ServiceBilling: ${JSON.stringify(serviceBillings, null, 2)}`);
+
+  return 'OK';
 };
 
