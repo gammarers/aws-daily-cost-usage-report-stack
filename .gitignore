@@ -50,3 +50,5 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+/assets/
+!/src/funcs/cost-reporter-function.ts
