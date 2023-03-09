@@ -1,9 +1,9 @@
 {
-  "name": "@yicr/cost-usage-reports",
+  "name": "@yicr/daily-cost-usage-reporter",
   "description": "Cost & Usage Reports",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yicr/cost-usage-reports.git"
+    "url": "https://github.com/yicr/daily-cost-usage-reporter.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -45,7 +45,7 @@
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "@yicr/jest-serializer-cdk-asset": "^0.1.36",
-    "aws-cdk-lib": "2.1.0",
+    "aws-cdk-lib": "2.42.0",
     "aws-sdk-client-mock": "^2.1.0",
     "aws-sdk-client-mock-jest": "^2.1.0",
     "constructs": "10.0.5",
@@ -68,12 +68,8 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@yicr/secure-bucket": "^0.1.37",
-    "aws-cdk-lib": "^2.1.0",
+    "aws-cdk-lib": "^2.42.0",
     "constructs": "^10.0.5"
-  },
-  "dependencies": {
-    "@yicr/secure-bucket": "^0.1.37"
   },
   "keywords": [
     "aws",
@@ -88,6 +84,9 @@
   "license": "Apache-2.0",
   "version": "0.0.0",
   "jest": {
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/@yicr/jest-serializer-cdk-asset"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.ts?(x)",
       "<rootDir>/(test|src)/**/*(*.)@(spec|test).ts?(x)"

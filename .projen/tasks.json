@@ -55,7 +55,7 @@
       "description": "Create a JavaScript bundle from src/funcs/cost-reporter.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/funcs/cost-reporter.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/funcs/cost-reporter.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/funcs/cost-reporter.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/funcs/cost-reporter.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/client-cost-explorer --sourcemap"
         }
       ]
     },
@@ -64,7 +64,7 @@
       "description": "Continuously update the JavaScript bundle from src/funcs/cost-reporter.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/funcs/cost-reporter.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/funcs/cost-reporter.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/funcs/cost-reporter.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/funcs/cost-reporter.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/client-cost-explorer --sourcemap --watch"
         }
       ]
     },
@@ -235,7 +235,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --updateSnapshot",
+          "exec": "jest --passWithNoTests --silent --updateSnapshot",
           "receiveArgs": true
         },
         {
