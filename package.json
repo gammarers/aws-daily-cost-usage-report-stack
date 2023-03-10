@@ -74,14 +74,15 @@
   "keywords": [
     "aws",
     "aws-cdk",
-    "bucket",
     "cdk",
     "cost",
-    "reports",
-    "s3"
+    "reports"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0",
   "jest": {
     "snapshotSerializers": [

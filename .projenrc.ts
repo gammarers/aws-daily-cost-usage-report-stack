@@ -1,4 +1,4 @@
-import { awscdk } from 'projen';
+import { awscdk, javascript } from 'projen';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'yicr',
   authorAddress: 'yicr@users.noreply.github.com',
@@ -6,7 +6,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@yicr/daily-cost-usage-reporter',
   description: 'Cost & Usage Reports',
-  keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports', 's3', 'bucket'],
+  keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports'],
   projenrcTs: true,
   repositoryUrl: 'https://github.com/yicr/daily-cost-usage-reporter.git',
   devDeps: [
@@ -30,6 +30,18 @@ const project = new awscdk.AwsCdkConstructLibrary({
       externals: ['@aws-sdk/client-cost-explorer'],
       sourcemap: true,
     },
+  },
+  releaseToNpm: true,
+  npmAccess: javascript.NpmAccess.PUBLIC,
+  depsUpgradeOptions: {
+    workflowOptions: {
+      labels: ['auto-approve', 'auto-merge'],
+      schedule: javascript.UpgradeDependenciesSchedule.expressions(['0 19 * * *']),
+    },
+  },
+  autoApproveOptions: {
+    secret: 'GITHUB_TOKEN',
+    allowedUsernames: ['yicr'],
   },
 });
 project.synth();
