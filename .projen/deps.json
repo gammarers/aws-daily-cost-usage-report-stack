@@ -5,6 +5,10 @@
       "type": "build"
     },
     {
+      "name": "@slack/webhook",
+      "type": "build"
+    },
+    {
       "name": "@types/aws-lambda",
       "type": "build"
     },
