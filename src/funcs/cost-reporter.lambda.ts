@@ -4,7 +4,15 @@ import {
   GetCostAndUsageCommandInput,
   GetCostAndUsageCommandOutput,
 } from '@aws-sdk/client-cost-explorer';
+import { IncomingWebhook } from '@slack/webhook';
 import { Context } from 'aws-lambda';
+
+export class EnvironmentVariableError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'EnvironmentVariableError';
+  }
+}
 
 export interface EventInput {
 }
@@ -32,6 +40,14 @@ const ceClient = new CostExplorerClient({
 export const handler = async (event: EventInput, context: Context): Promise<string | Error> => {
   console.log(`Event: ${JSON.stringify(event, null, 2)}`);
   console.log(`Context: ${JSON.stringify(context, null, 2)}`);
+
+  // do validation
+  if (!process.env.SLACK_WEBHOOK_URL) {
+    throw new EnvironmentVariableError('SLACK_WEBHOOK_URL environment variable not set.');
+  }
+  if (!process.env.SLACK_POST_CHANNEL) {
+    throw new EnvironmentVariableError('SLACK_POST_CHANNEL environment variable not set.');
+  }
 
   // 👇Calculate Date Range
   const dateRange: DateRange = (() => {
@@ -132,6 +148,30 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
 
   console.log(`TotalBilling: ${JSON.stringify(totalBilling, null, 2)}`);
   console.log(`ServiceBilling: ${JSON.stringify(serviceBillings, null, 2)}`);
+
+  const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL, {
+    icon_emoji: ':money-with-wings:',
+    channel: process.env.SLACK_POST_CHANNEL,
+  });
+
+  // Send the notification
+  await (async () => {
+    await webhook.send({
+      icon_emoji: ':money-with-wings:',
+      text: `AWS Cost Reports (${dateRange.start} - ${dateRange.end})`,
+      attachments: [{
+        title: 'Total',
+        text: `${totalBilling?.amount} ${totalBilling?.unit}`,
+        fields: serviceBillings?.map((value) => {
+          return {
+            title: value.service,
+            value: `${value.amount} ${value.unit}`,
+            short: false,
+          };
+        }),
+      }],
+    });
+  })();
 
   return 'OK';
 };

@@ -1,7 +1,8 @@
 import { CostExplorerClient, GetCostAndUsageCommand } from '@aws-sdk/client-cost-explorer';
+import { IncomingWebhook } from '@slack/webhook';
 import { Context } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import { handler } from '../../src/funcs/cost-reporter.lambda';
+import { handler, EnvironmentVariableError } from '../../src/funcs/cost-reporter.lambda';
 
 describe('Lambda Function Handler testing', () => {
 
@@ -10,6 +11,11 @@ describe('Lambda Function Handler testing', () => {
   beforeEach(() => {
     ceClientMock.reset();
   });
+
+  // Slack Webhook mock.
+  jest
+    .spyOn(IncomingWebhook.prototype, 'send')
+    .mockImplementation();
 
   describe('Not beginning of the month...', () => {
     beforeEach(() => {
@@ -120,7 +126,8 @@ describe('Lambda Function Handler testing', () => {
           });
 
         process.env = {
-          //BUCKET_NAME: 'example-bucket',
+          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
+          SLACK_POST_CHANNEL: 'example-channel',
         };
         const result = await handler({}, {} as Context);
 
@@ -159,7 +166,8 @@ describe('Lambda Function Handler testing', () => {
           .rejects();
 
         process.env = {
-          //BUCKET_NAME: 'example-bucket',
+          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
+          SLACK_POST_CHANNEL: 'example-channel',
         };
         const result = await handler({}, {} as Context);
 
@@ -207,7 +215,8 @@ describe('Lambda Function Handler testing', () => {
         });
 
       process.env = {
-        //BUCKET_NAME: 'example-bucket',
+        SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
+        SLACK_POST_CHANNEL: 'example-channel',
       };
       const result = await handler({}, {} as Context);
 
@@ -325,7 +334,8 @@ describe('Lambda Function Handler testing', () => {
           });
 
         process.env = {
-          //BUCKET_NAME: 'example-bucket',
+          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
+          SLACK_POST_CHANNEL: 'example-channel',
         };
         const result = await handler({}, {} as Context);
 
@@ -335,23 +345,21 @@ describe('Lambda Function Handler testing', () => {
     });
 
   });
-  it('Should CostExplorer', async () => {
 
-
-    //
-
-
-    // expect(ceClientMock.calls()).toHaveLength(2);
-
-    //expect(cwLogsMock).toHaveReceivedCommandTimes(CreateExportTaskCommand,1);
+  describe('Error handling', () => {
+    describe('Should Environment Variable Error handling', () => {
+      it('Should error cause EnvironmentVariableError(SLACK_WEBHOOK_URL)', async () => {
+        process.env = {
+          SLACK_POST_CHANNEL: 'example-channel',
+        };
+        await expect(handler({}, {} as Context)).rejects.toThrow(EnvironmentVariableError);
+      });
+      it('Should error cause EnvironmentVariableError(SLACK_POST_CHANNEL)', async () => {
+        process.env = {
+          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
+        };
+        await expect(handler({}, {} as Context)).rejects.toThrow(EnvironmentVariableError);
+      });
+    });
   });
-
-  it('Should EnvironmentVariableError(BUCKET_NAME)', async () => {
-    //const payload: EventInput = {};
-    //process.env = {};
-    //const result = handler(payload, {} as Context);
-    //await expect(handler(payload, {} as Context)).rejects.toThrow(EnvironmentVariableError);
-    //expect(result).toThrowError(EnvironmentVariableError);
-  });
-
 });
