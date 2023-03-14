@@ -2,19 +2,21 @@ import { awscdk, javascript } from 'projen';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'yicr',
   authorAddress: 'yicr@users.noreply.github.com',
-  cdkVersion: '2.42.0',
+  cdkVersion: '2.60.0',
   defaultReleaseBranch: 'main',
   name: '@yicr/daily-cost-usage-reporter',
   description: 'Cost & Usage Reports',
   keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports'],
   projenrcTs: true,
   repositoryUrl: 'https://github.com/yicr/daily-cost-usage-reporter.git',
+  deps: [
+  ],
   devDeps: [
     'aws-sdk-client-mock',
     'aws-sdk-client-mock-jest',
+    '@yicr/jest-serializer-cdk-asset',
     '@aws-sdk/client-cost-explorer',
     '@types/aws-lambda',
-    '@yicr/jest-serializer-cdk-asset',
     '@slack/webhook',
   ],
   jestOptions: {

@@ -2,7 +2,7 @@ import { CostExplorerClient, GetCostAndUsageCommand } from '@aws-sdk/client-cost
 import { IncomingWebhook } from '@slack/webhook';
 import { Context } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import { handler, EnvironmentVariableError } from '../../src/funcs/cost-reporter.lambda';
+import { handler, MissingEnvironmentVariableError } from '../../src/funcs/cost-reporter.lambda';
 
 describe('Lambda Function Handler testing', () => {
 
@@ -352,13 +352,13 @@ describe('Lambda Function Handler testing', () => {
         process.env = {
           SLACK_POST_CHANNEL: 'example-channel',
         };
-        await expect(handler({}, {} as Context)).rejects.toThrow(EnvironmentVariableError);
+        await expect(handler({}, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
       });
       it('Should error cause EnvironmentVariableError(SLACK_POST_CHANNEL)', async () => {
         process.env = {
           SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
         };
-        await expect(handler({}, {} as Context)).rejects.toThrow(EnvironmentVariableError);
+        await expect(handler({}, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
       });
     });
   });

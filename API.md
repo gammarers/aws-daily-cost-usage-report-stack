@@ -133,6 +133,7 @@ const dailyCostUsageReporterProps: DailyCostUsageReporterProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackPostChannel">slackPostChannel</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackWebhookUrl">slackWebhookUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.scheduleTimezone">scheduleTimezone</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -150,6 +151,16 @@ public readonly slackPostChannel: string;
 
 ```typescript
 public readonly slackWebhookUrl: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scheduleTimezone`<sup>Optional</sup> <a name="scheduleTimezone" id="@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.scheduleTimezone"></a>
+
+```typescript
+public readonly scheduleTimezone: string;
 ```
 
 - *Type:* string
