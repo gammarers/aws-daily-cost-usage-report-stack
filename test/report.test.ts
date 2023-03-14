@@ -12,7 +12,10 @@ describe('CostUsageReports Testing', () => {
     },
   });
 
-  new DailyCostUsageReporter(stack, 'DailyCostUsageReporter');
+  new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
+    slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx',
+    slackPostChannel: 'example-channel',
+  });
 
   const template = Template.fromStack(stack);
 
@@ -78,6 +81,8 @@ describe('CostUsageReports Testing', () => {
         Environment: {
           Variables: {
             AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+            SLACK_WEBHOOK_URL: Match.anyValue(),
+            SLACK_POST_CHANNEL: Match.anyValue(),
           },
         },
         Role: {

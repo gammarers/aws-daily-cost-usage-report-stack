@@ -4,8 +4,13 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 import { CostReporterFunction } from './funcs/cost-reporter-function';
 
+export interface DailyCostUsageReporterProps {
+  readonly slackWebhookUrl: string;
+  readonly slackPostChannel: string;
+}
+
 export class DailyCostUsageReporter extends Construct {
-  constructor(scope: Construct, id: string) {
+  constructor(scope: Construct, id: string, props: DailyCostUsageReporterProps) {
     super(scope, id);
 
     // 👇Get current account & region
@@ -47,6 +52,8 @@ export class DailyCostUsageReporter extends Construct {
       description: 'A function to archive logs s3 bucket from CloudWatch Logs.',
       environment: {
         //BUCKET_NAME: logArchiveBucket.bucketName,
+        SLACK_WEBHOOK_URL: props.slackWebhookUrl,
+        SLACK_POST_CHANNEL: props.slackPostChannel,
       },
       role: lambdaExecutionRole,
     });
