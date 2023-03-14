@@ -9,13 +9,14 @@
 ```typescript
 import { DailyCostUsageReporter } from '@yicr/daily-cost-usage-reporter'
 
-new DailyCostUsageReporter(scope: Construct, id: string)
+new DailyCostUsageReporter(scope: Construct, id: string, props: DailyCostUsageReporterProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.props">props</a></code> | <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps">DailyCostUsageReporterProps</a></code> | *No description.* |
 
 ---
 
@@ -28,6 +29,12 @@ new DailyCostUsageReporter(scope: Construct, id: string)
 ##### `id`<sup>Required</sup> <a name="id" id="@yicr/daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@yicr/daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps">DailyCostUsageReporterProps</a>
 
 ---
 
@@ -108,6 +115,46 @@ The tree node.
 ---
 
 
+## Structs <a name="Structs" id="Structs"></a>
+
+### DailyCostUsageReporterProps <a name="DailyCostUsageReporterProps" id="@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps"></a>
+
+#### Initializer <a name="Initializer" id="@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.Initializer"></a>
+
+```typescript
+import { DailyCostUsageReporterProps } from '@yicr/daily-cost-usage-reporter'
+
+const dailyCostUsageReporterProps: DailyCostUsageReporterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackPostChannel">slackPostChannel</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackWebhookUrl">slackWebhookUrl</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `slackPostChannel`<sup>Required</sup> <a name="slackPostChannel" id="@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackPostChannel"></a>
+
+```typescript
+public readonly slackPostChannel: string;
+```
+
+- *Type:* string
+
+---
+
+##### `slackWebhookUrl`<sup>Required</sup> <a name="slackWebhookUrl" id="@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackWebhookUrl"></a>
+
+```typescript
+public readonly slackWebhookUrl: string;
+```
+
+- *Type:* string
+
+---
 
 
 
