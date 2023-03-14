@@ -1,12 +1,14 @@
 import * as crypto from 'crypto';
 import * as cdk from 'aws-cdk-lib';
 import * as iam from 'aws-cdk-lib/aws-iam';
+import * as scheduler from 'aws-cdk-lib/aws-scheduler';
 import { Construct } from 'constructs';
 import { CostReporterFunction } from './funcs/cost-reporter-function';
 
 export interface DailyCostUsageReporterProps {
   readonly slackWebhookUrl: string;
   readonly slackPostChannel: string;
+  readonly scheduleTimezone?: string;
 }
 
 export class DailyCostUsageReporter extends Construct {
@@ -14,7 +16,7 @@ export class DailyCostUsageReporter extends Construct {
     super(scope, id);
 
     // 👇Get current account & region
-    // const account = cdk.Stack.of(this).account;
+    const account = cdk.Stack.of(this).account;
     // const region = cdk.Stack.of(this).region;
 
     // 👇Create random key
@@ -46,8 +48,7 @@ export class DailyCostUsageReporter extends Construct {
     });
 
     // 👇Lambda Function
-    //const lambdaFunction =
-    new CostReporterFunction(this, 'CostReporterFunction', {
+    const lambdaFunction = new CostReporterFunction(this, 'CostReporterFunction', {
       functionName: `cost-report-${randomNameKey}-func`,
       description: 'A function to archive logs s3 bucket from CloudWatch Logs.',
       environment: {
@@ -58,8 +59,49 @@ export class DailyCostUsageReporter extends Construct {
       role: lambdaExecutionRole,
     });
 
-    // 👇Schedule
+    // 👇EventBridge Scheduler IAM Role
+    const schedulerExecutionRole = new iam.Role(this, 'SchedulerExecutionRole', {
+      roleName: `daily-cost-report-schedule-${randomNameKey}-exec-role`,
+      assumedBy: new iam.ServicePrincipal('scheduler.amazonaws.com'),
+      inlinePolicies: {
+        ['lambda-invoke-policy']: new iam.PolicyDocument({
+          statements: [
+            new iam.PolicyStatement({
+              effect: iam.Effect.ALLOW,
+              actions: [
+                'lambda:InvokeFunction',
+              ],
+              resources: [
+                lambdaFunction.functionArn,
+                `${lambdaFunction.functionArn}:*`,
+              ],
+            }),
+          ],
+        }),
+      },
+    });
 
+    // 👇Schedule
+    new scheduler.CfnSchedule(this, 'Schedule', {
+      name: `daily-cost-report-${account}-schedule`,
+      description: `aws account ${account} const reports.`,
+      state: 'ENABLED',
+      //groupName: scheduleGroup.name, // default
+      flexibleTimeWindow: {
+        mode: 'OFF',
+      },
+      scheduleExpressionTimezone: props.scheduleTimezone ?? 'UTC',
+      scheduleExpression: 'cron(1 9 * * ? *)',
+      target: {
+        arn: lambdaFunction.functionArn,
+        roleArn: schedulerExecutionRole.roleArn,
+        input: JSON.stringify({}),
+        retryPolicy: {
+          maximumEventAgeInSeconds: 60,
+          maximumRetryAttempts: 0,
+        },
+      },
+    });
   }
 
 }
