@@ -9,6 +9,12 @@ export interface DailyCostUsageReporterProps {
   readonly slackWebhookUrl: string;
   readonly slackPostChannel: string;
   readonly scheduleTimezone?: string;
+  readonly costGroupType: CostGroupType;
+}
+
+export enum CostGroupType {
+  ACCOUNTS = 'Accounts',
+  SERVICES = 'Services',
 }
 
 export class DailyCostUsageReporter extends Construct {
@@ -95,7 +101,7 @@ export class DailyCostUsageReporter extends Construct {
       target: {
         arn: lambdaFunction.functionArn,
         roleArn: schedulerExecutionRole.roleArn,
-        input: JSON.stringify({}),
+        input: JSON.stringify({ Type: props.costGroupType }),
         retryPolicy: {
           maximumEventAgeInSeconds: 60,
           maximumRetryAttempts: 0,

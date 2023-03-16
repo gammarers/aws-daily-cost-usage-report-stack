@@ -131,9 +131,20 @@ const dailyCostUsageReporterProps: DailyCostUsageReporterProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.costGroupType">costGroupType</a></code> | <code><a href="#@yicr/daily-cost-usage-reporter.CostGroupType">CostGroupType</a></code> | *No description.* |
 | <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackPostChannel">slackPostChannel</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackWebhookUrl">slackWebhookUrl</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.scheduleTimezone">scheduleTimezone</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `costGroupType`<sup>Required</sup> <a name="costGroupType" id="@yicr/daily-cost-usage-reporter.DailyCostUsageReporterProps.property.costGroupType"></a>
+
+```typescript
+public readonly costGroupType: CostGroupType;
+```
+
+- *Type:* <a href="#@yicr/daily-cost-usage-reporter.CostGroupType">CostGroupType</a>
 
 ---
 
@@ -168,4 +179,26 @@ public readonly scheduleTimezone: string;
 ---
 
 
+
+## Enums <a name="Enums" id="Enums"></a>
+
+### CostGroupType <a name="CostGroupType" id="@yicr/daily-cost-usage-reporter.CostGroupType"></a>
+
+#### Members <a name="Members" id="Members"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@yicr/daily-cost-usage-reporter.CostGroupType.ACCOUNTS">ACCOUNTS</a></code> | *No description.* |
+| <code><a href="#@yicr/daily-cost-usage-reporter.CostGroupType.SERVICES">SERVICES</a></code> | *No description.* |
+
+---
+
+##### `ACCOUNTS` <a name="ACCOUNTS" id="@yicr/daily-cost-usage-reporter.CostGroupType.ACCOUNTS"></a>
+
+---
+
+
+##### `SERVICES` <a name="SERVICES" id="@yicr/daily-cost-usage-reporter.CostGroupType.SERVICES"></a>
+
+---
 

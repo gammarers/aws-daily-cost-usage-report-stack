@@ -1,6 +1,6 @@
 import { App, Stack } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
-import { DailyCostUsageReporter } from '../src';
+import { CostGroupType, DailyCostUsageReporter } from '../src';
 
 describe('CostUsageReports Construct Testing', () => {
 
@@ -16,6 +16,7 @@ describe('CostUsageReports Construct Testing', () => {
     new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
       slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx',
       slackPostChannel: 'example-channel',
+      costGroupType: CostGroupType.SERVICES,
     });
 
     const template = Template.fromStack(stack);
@@ -120,7 +121,7 @@ describe('CostUsageReports Construct Testing', () => {
               'Arn',
             ],
           },
-          Input: Match.stringLikeRegexp('{}'),
+          Input: Match.stringLikeRegexp('{"Type":"(Accounts|Services)"}'),
           RetryPolicy: {
             MaximumEventAgeInSeconds: 60,
             MaximumRetryAttempts: 0,
@@ -145,6 +146,7 @@ describe('CostUsageReports Construct Testing', () => {
     });
 
     new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
+      costGroupType: CostGroupType.SERVICES,
       slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx',
       slackPostChannel: 'example-channel',
       scheduleTimezone: 'Asia/Tokyo',
@@ -175,7 +177,7 @@ describe('CostUsageReports Construct Testing', () => {
               'Arn',
             ],
           },
-          Input: Match.stringLikeRegexp('{}'),
+          Input: Match.stringLikeRegexp('{"Type":"(Accounts|Services)"}'),
           RetryPolicy: {
             MaximumEventAgeInSeconds: 60,
             MaximumRetryAttempts: 0,
