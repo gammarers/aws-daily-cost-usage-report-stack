@@ -2,7 +2,7 @@ import { CostExplorerClient, GetCostAndUsageCommand } from '@aws-sdk/client-cost
 import { IncomingWebhook } from '@slack/webhook';
 import { Context } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import { handler, MissingEnvironmentVariableError } from '../../src/funcs/cost-reporter.lambda';
+import { handler, MissingEnvironmentVariableError, MissingInputVariableError, InvalidInputVariableError } from '../../src/funcs/cost-reporter.lambda';
 
 describe('Lambda Function Handler testing', () => {
 
@@ -348,17 +348,33 @@ describe('Lambda Function Handler testing', () => {
 
   describe('Error handling', () => {
     describe('Should Environment Variable Error handling', () => {
-      it('Should error cause EnvironmentVariableError(SLACK_WEBHOOK_URL)', async () => {
+      it('Should error cause MissingEnvironmentVariableError(SLACK_WEBHOOK_URL)', async () => {
         process.env = {
           SLACK_POST_CHANNEL: 'example-channel',
         };
         await expect(handler({ Type: 'Services' }, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
       });
-      it('Should error cause EnvironmentVariableError(SLACK_POST_CHANNEL)', async () => {
+      it('Should error cause MissingEnvironmentVariableError(SLACK_POST_CHANNEL)', async () => {
         process.env = {
           SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
         };
         await expect(handler({ Type: 'Services' }, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
+      });
+    });
+    describe('Should Event Input Variable Error handling', () => {
+      it('Should error cause MissingInputVariableError(Type)', async () => {
+        process.env = {
+          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
+          SLACK_POST_CHANNEL: 'example-channel',
+        };
+        await expect(handler({ Type: '' }, {} as Context)).rejects.toThrow(MissingInputVariableError);
+      });
+      it('Should error cause InvalidInputVariableError(Type)', async () => {
+        process.env = {
+          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
+          SLACK_POST_CHANNEL: 'example-channel',
+        };
+        await expect(handler({ Type: 'Miss' }, {} as Context)).rejects.toThrow(InvalidInputVariableError);
       });
     });
   });
