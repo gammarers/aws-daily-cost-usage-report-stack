@@ -103,7 +103,7 @@ Object {
               "Arn",
             ],
           },
-          "Input": "{}",
+          "Input": "{"Type":"Accounts"}",
           "RetryPolicy": Object {
             "MaximumEventAgeInSeconds": 60,
             "MaximumRetryAttempts": 0,
@@ -306,7 +306,7 @@ Object {
               "Arn",
             ],
           },
-          "Input": "{}",
+          "Input": "{"Type":"Accounts"}",
           "RetryPolicy": Object {
             "MaximumEventAgeInSeconds": 60,
             "MaximumRetryAttempts": 0,
