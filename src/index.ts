@@ -95,7 +95,7 @@ export class DailyCostUsageReporter extends Construct {
       target: {
         arn: lambdaFunction.functionArn,
         roleArn: schedulerExecutionRole.roleArn,
-        input: JSON.stringify({}),
+        input: JSON.stringify({ Type: 'Accounts' }),
         retryPolicy: {
           maximumEventAgeInSeconds: 60,
           maximumRetryAttempts: 0,

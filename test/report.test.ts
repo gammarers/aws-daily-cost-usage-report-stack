@@ -120,7 +120,7 @@ describe('CostUsageReports Construct Testing', () => {
               'Arn',
             ],
           },
-          Input: Match.stringLikeRegexp('{}'),
+          Input: Match.stringLikeRegexp('{"Type":"(Accounts|Services)"}'),
           RetryPolicy: {
             MaximumEventAgeInSeconds: 60,
             MaximumRetryAttempts: 0,
@@ -175,7 +175,7 @@ describe('CostUsageReports Construct Testing', () => {
               'Arn',
             ],
           },
-          Input: Match.stringLikeRegexp('{}'),
+          Input: Match.stringLikeRegexp('{"Type":"(Accounts|Services)"}'),
           RetryPolicy: {
             MaximumEventAgeInSeconds: 60,
             MaximumRetryAttempts: 0,

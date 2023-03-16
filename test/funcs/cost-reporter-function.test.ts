@@ -129,7 +129,7 @@ describe('Lambda Function Handler testing', () => {
           SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
           SLACK_POST_CHANNEL: 'example-channel',
         };
-        const result = await handler({}, {} as Context);
+        const result = await handler({ Type: 'Services' }, {} as Context);
 
         expect(result).toEqual('OK');
       });
@@ -169,7 +169,7 @@ describe('Lambda Function Handler testing', () => {
           SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
           SLACK_POST_CHANNEL: 'example-channel',
         };
-        const result = await handler({}, {} as Context);
+        const result = await handler({ Type: 'Services' }, {} as Context);
 
         expect(result).toEqual('OK');
       });
@@ -218,7 +218,7 @@ describe('Lambda Function Handler testing', () => {
         SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
         SLACK_POST_CHANNEL: 'example-channel',
       };
-      const result = await handler({}, {} as Context);
+      const result = await handler({ Type: 'Services' }, {} as Context);
 
       expect(result).toEqual('OK');
     });
@@ -337,7 +337,7 @@ describe('Lambda Function Handler testing', () => {
           SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
           SLACK_POST_CHANNEL: 'example-channel',
         };
-        const result = await handler({}, {} as Context);
+        const result = await handler({ Type: 'Services' }, {} as Context);
 
         expect(result).toEqual('OK');
       });
@@ -352,13 +352,13 @@ describe('Lambda Function Handler testing', () => {
         process.env = {
           SLACK_POST_CHANNEL: 'example-channel',
         };
-        await expect(handler({}, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
+        await expect(handler({ Type: 'Services' }, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
       });
       it('Should error cause EnvironmentVariableError(SLACK_POST_CHANNEL)', async () => {
         process.env = {
           SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
         };
-        await expect(handler({}, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
+        await expect(handler({ Type: 'Services' }, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
       });
     });
   });
