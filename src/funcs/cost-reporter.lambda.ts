@@ -26,7 +26,12 @@ export class InvalidInputVariableError extends Error {
 }
 
 export interface EventInput {
-  readonly Type: string;
+  readonly Type: EventInputType;
+}
+
+export enum EventInputType {
+  ACCOUNTS = 'Accounts',
+  SERVICES = 'Services',
 }
 
 export interface MessageAttachmentField {
@@ -52,7 +57,7 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
   if (!event.Type) {
     throw new MissingInputVariableError('missing input variable Type');
   } else {
-    if (!Array('Accounts', 'Services').includes(event.Type)) {
+    if (!Object.values(EventInputType).includes(event.Type)) {
       throw new InvalidInputVariableError('invalid input variable Type is Account or Service.');
     }
   }
@@ -67,7 +72,8 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
 
   const fields: MessageAttachmentField[] | undefined = await (async () => {
     switch (event.Type) {
-      case 'Accounts':
+      case EventInputType.ACCOUNTS:
+        // 👇Get Accounts Billings
         const accountBillings = await (new GetAccountBillings(ceClient).execute(dateRange));
         console.log(`AccountBillings: ${JSON.stringify(accountBillings, null, 2)}`);
         return accountBillings?.map((value) => {
@@ -76,7 +82,7 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
             value: `${value.amount} ${value.unit}`,
           };
         });
-      case 'Services':
+      case EventInputType.SERVICES:
         // 👇Get Service Billings
         const serviceBillings = await (new GetServiceBilling(ceClient)).execute(dateRange);
         console.log(`ServiceBilling: ${JSON.stringify(serviceBillings, null, 2)}`);
@@ -86,8 +92,6 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
             value: `${value.amount} ${value.unit}`,
           };
         });
-      default:
-        return undefined;
     }
   })();
 
