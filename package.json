@@ -1,9 +1,9 @@
 {
-  "name": "@yicr/daily-cost-usage-reporter",
+  "name": "@yicr/aws-daily-cost-usage-reporter",
   "description": "Cost & Usage Reports",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yicr/daily-cost-usage-reporter.git"
+    "url": "https://github.com/yicr/aws-daily-cost-usage-reporter.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -77,7 +77,8 @@
     "aws-cdk",
     "cdk",
     "cost",
-    "reports"
+    "reports",
+    "slack"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",

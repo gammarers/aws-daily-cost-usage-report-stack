@@ -31,11 +31,11 @@ yarn add @yicr/daily-cost-usage-repoter
 ## Example
 
 ```shell
-npm install @yicr/daily-cost-usage-repoter
+npm install @yicr/aws-daily-cost-usage-repoter
 ```
 
 ```typescript
-import { CostGroupType, DailyCostUsageReporter } from '@yicr/daily-cost-usage-repoter';
+import { CostGroupType, DailyCostUsageReporter } from '@yicr/aws-daily-cost-usage-repoter';
 
 new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
   slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx', // already created slack webhook url
