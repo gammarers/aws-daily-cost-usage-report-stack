@@ -78,6 +78,7 @@ describe('Lambda Function Handler testing', () => {
               $metadata: {
                 httpStatusCode: 200,
               },
+              NextPageToken: 'XXXxxXXXxxXXXxxXXXxxXXXxxXXXxxXXXxxXXXxx',
               ResultsByTime: [
                 {
                   Estimated: false,
@@ -109,6 +110,40 @@ describe('Lambda Function Handler testing', () => {
                         },
                       },
                     },
+                  ],
+                },
+              ],
+            })
+            .on(GetCostAndUsageCommand, {
+              NextPageToken: 'XXXxxXXXxxXXXxxXXXxxXXXxxXXXxxXXXxxXXXxx',
+              TimePeriod: {
+                Start: '2023-02-01',
+                End: '2023-02-22',
+              },
+              Granularity: 'MONTHLY',
+              Metrics: [
+                'AMORTIZED_COST',
+              ],
+              GroupBy: [
+                {
+                  Type: 'DIMENSION',
+                  Key: 'SERVICE',
+                },
+              ],
+            })
+            .resolves({
+              $metadata: {
+                httpStatusCode: 200,
+              },
+              ResultsByTime: [
+                {
+                  Estimated: false,
+                  TimePeriod: {
+                    End: '2023-02-28',
+                    Start: '2023-02-01',
+                  },
+                  Total: {},
+                  Groups: [
                     {
                       Keys: [
                         'Tax',
@@ -121,7 +156,6 @@ describe('Lambda Function Handler testing', () => {
                       },
                     },
                   ],
-
                 },
               ],
             });
@@ -277,6 +311,7 @@ describe('Lambda Function Handler testing', () => {
               $metadata: {
                 httpStatusCode: 200,
               },
+              NextPageToken: 'XXXxxXXXxxXXXxxXXXxxXXXxxXXXxxXXXxxXXXxx',
               ResultsByTime: [
                 {
                   Estimated: false,
@@ -308,6 +343,17 @@ describe('Lambda Function Handler testing', () => {
                         },
                       },
                     },
+                    {
+                      Keys: [
+                        '333333333333',
+                      ],
+                      Metrics: {
+                        AmortizedCost: {
+                          Amount: '7.1233988094',
+                          Unit: 'USD',
+                        },
+                      },
+                    },
                   ],
                 },
               ],
@@ -322,6 +368,65 @@ describe('Lambda Function Handler testing', () => {
                   Value: '222222222222',
                   Attributes: {
                     description: 'Example System 2A',
+                  },
+                },
+                {
+                  Value: '333333333333',
+                  Attributes: {
+                    description: 'Example System 3A',
+                  },
+                },
+              ],
+            })
+            .on(GetCostAndUsageCommand, {
+              NextPageToken: 'XXXxxXXXxxXXXxxXXXxxXXXxxXXXxxXXXxxXXXxx',
+              TimePeriod: {
+                Start: '2023-02-01',
+                End: '2023-02-22',
+              },
+              Granularity: 'MONTHLY',
+              Metrics: [
+                'AMORTIZED_COST',
+              ],
+              GroupBy: [
+                {
+                  Type: 'DIMENSION',
+                  Key: 'LINKED_ACCOUNT',
+                },
+              ],
+            })
+            .resolves({
+              $metadata: {
+                httpStatusCode: 200,
+              },
+              ResultsByTime: [
+                {
+                  Estimated: false,
+                  TimePeriod: {
+                    End: '2023-02-28',
+                    Start: '2023-02-01',
+                  },
+                  Total: {},
+                  Groups: [
+                    {
+                      Keys: [
+                        '444444444444',
+                      ],
+                      Metrics: {
+                        AmortizedCost: {
+                          Amount: '0.4724468979',
+                          Unit: 'USD',
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
+              DimensionValueAttributes: [
+                {
+                  Value: '444444444444',
+                  Attributes: {
+                    description: 'Example System 4A',
                   },
                 },
               ],
