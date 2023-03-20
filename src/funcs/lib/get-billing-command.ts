@@ -57,8 +57,9 @@ export class GetServiceBilling {
     private client: CostExplorerClient,
   ) {};
 
-  public execute = async (dateRange: GetDateRange): Promise<ServiceBilling[] | undefined> => {
+  public execute = async (dateRange: GetDateRange, nextPageToken?: string): Promise<ServiceBilling[] | undefined> => {
     const input: GetCostAndUsageCommandInput = {
+      NextPageToken: nextPageToken,
       TimePeriod: {
         Start: dateRange.start,
         End: dateRange.end,
@@ -76,7 +77,7 @@ export class GetServiceBilling {
     };
     console.log(`ServiceBillings:Command:Input:${JSON.stringify(input)}`);
     return this.client.send(new GetCostAndUsageCommand(input))
-      .then((data) => {
+      .then(async (data) => {
         const billings: ServiceBilling[] = [];
         if (data.ResultsByTime && data.ResultsByTime.length === 1) {
           for (const item of Object(data.ResultsByTime[0]).Groups) {
@@ -87,11 +88,17 @@ export class GetServiceBilling {
             });
           }
           console.log(`ServiceBillings:Command:Output(Shaped):${JSON.stringify(billings)}`);
+          if (data.NextPageToken) {
+            const nextBillings = await this.execute(dateRange, data.NextPageToken);
+            if (nextBillings) {
+              return billings.concat(nextBillings);
+            }
+          }
           return billings;
         }
         return undefined;
       })
-      .catch((error) => {
+      .catch(async (error) => {
         console.log('Error caught...');
         console.log(`Error:${JSON.stringify(error)}`);
         return undefined;
@@ -110,8 +117,9 @@ export class GetAccountBillings {
     private client: CostExplorerClient,
   ) {};
 
-  public execute = async (dateRange: GetDateRange): Promise<AccountBilling[] | undefined> => {
+  public execute = async (dateRange: GetDateRange, nextPageToken?: string): Promise<AccountBilling[] | undefined> => {
     const input: GetCostAndUsageCommandInput = {
+      NextPageToken: nextPageToken,
       TimePeriod: {
         Start: dateRange.start,
         End: dateRange.end,
@@ -129,7 +137,7 @@ export class GetAccountBillings {
     };
     console.log(`AccountBillings:Command:Input:${JSON.stringify(input)}`);
     return this.client.send(new GetCostAndUsageCommand(input))
-      .then((data) => {
+      .then(async (data) => {
         const billings: AccountBilling[] = [];
         if (data.ResultsByTime && data.ResultsByTime.length === 1) {
           const groups = Object(data.ResultsByTime[0]).Groups;
@@ -146,11 +154,17 @@ export class GetAccountBillings {
             }
           }
           console.log(`AccountBillings:Command:Output(Shaped):${JSON.stringify(billings)}`);
+          if (data.NextPageToken) {
+            const nextBillings = await this.execute(dateRange, data.NextPageToken);
+            if (nextBillings) {
+              return billings.concat(nextBillings);
+            }
+          }
           return billings;
         }
         return undefined;
       })
-      .catch((error) => {
+      .catch(async (error) => {
         console.log('Error caught...');
         console.log(`Error:${JSON.stringify(error)}`);
         return undefined;
