@@ -21,11 +21,11 @@ This construct creating resource list.
 ### TypeScript
 
 ```shell
-npm install @yicr/daily-cost-usage-repoter
+npm install @yicr/aws-daily-cost-usage-repoter
 ```
 or
 ```shell
-yarn add @yicr/daily-cost-usage-repoter
+yarn add @yicr/aws-daily-cost-usage-repoter
 ```
 
 ## Example
