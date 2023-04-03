@@ -23,8 +23,8 @@ Object {
         "Environment": Object {
           "Variables": Object {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-            "SLACK_POST_CHANNEL": "example-channel",
-            "SLACK_WEBHOOK_URL": "https://hooks.slack.com/services/xxxxxxxxxx",
+            "SLACK_CHANNEL": "example-channel",
+            "SLACK_TOKEN": "xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX",
           },
         },
         "FunctionName": "cost-report-d83e5229-func",
@@ -226,8 +226,8 @@ Object {
         "Environment": Object {
           "Variables": Object {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-            "SLACK_POST_CHANNEL": "example-channel",
-            "SLACK_WEBHOOK_URL": "https://hooks.slack.com/services/xxxxxxxxxx",
+            "SLACK_CHANNEL": "example-channel",
+            "SLACK_TOKEN": "xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX",
           },
         },
         "FunctionName": "cost-report-d83e5229-func",

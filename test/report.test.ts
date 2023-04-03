@@ -14,8 +14,8 @@ describe('CostUsageReports Construct Testing', () => {
     });
 
     new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
-      slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx',
-      slackPostChannel: 'example-channel',
+      slackToken: 'xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX',
+      slackChannel: 'example-channel',
       costGroupType: CostGroupType.SERVICES,
     });
 
@@ -83,8 +83,8 @@ describe('CostUsageReports Construct Testing', () => {
           Environment: {
             Variables: {
               AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-              SLACK_WEBHOOK_URL: Match.anyValue(),
-              SLACK_POST_CHANNEL: Match.anyValue(),
+              SLACK_TOKEN: Match.anyValue(),
+              SLACK_CHANNEL: Match.anyValue(),
             },
           },
           Role: {
@@ -147,8 +147,8 @@ describe('CostUsageReports Construct Testing', () => {
 
     new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
       costGroupType: CostGroupType.SERVICES,
-      slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx',
-      slackPostChannel: 'example-channel',
+      slackToken: 'xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX',
+      slackChannel: 'example-channel',
       scheduleTimezone: 'Asia/Tokyo',
     });
 

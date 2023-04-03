@@ -5,7 +5,7 @@
       "type": "build"
     },
     {
-      "name": "@slack/webhook",
+      "name": "@slack/web-api",
       "type": "build"
     },
     {

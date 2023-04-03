@@ -132,8 +132,8 @@ const dailyCostUsageReporterProps: DailyCostUsageReporterProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.costGroupType">costGroupType</a></code> | <code><a href="#@yicr/aws-daily-cost-usage-reporter.CostGroupType">CostGroupType</a></code> | *No description.* |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackPostChannel">slackPostChannel</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackWebhookUrl">slackWebhookUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackChannel">slackChannel</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackToken">slackToken</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.scheduleTimezone">scheduleTimezone</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -148,20 +148,20 @@ public readonly costGroupType: CostGroupType;
 
 ---
 
-##### `slackPostChannel`<sup>Required</sup> <a name="slackPostChannel" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackPostChannel"></a>
+##### `slackChannel`<sup>Required</sup> <a name="slackChannel" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackChannel"></a>
 
 ```typescript
-public readonly slackPostChannel: string;
+public readonly slackChannel: string;
 ```
 
 - *Type:* string
 
 ---
 
-##### `slackWebhookUrl`<sup>Required</sup> <a name="slackWebhookUrl" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackWebhookUrl"></a>
+##### `slackToken`<sup>Required</sup> <a name="slackToken" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackToken"></a>
 
 ```typescript
-public readonly slackWebhookUrl: string;
+public readonly slackToken: string;
 ```
 
 - *Type:* string

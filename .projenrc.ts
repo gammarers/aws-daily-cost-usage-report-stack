@@ -17,7 +17,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@yicr/jest-serializer-cdk-asset',
     '@aws-sdk/client-cost-explorer',
     '@types/aws-lambda',
-    '@slack/webhook',
+    '@slack/web-api',
   ],
   jestOptions: {
     jestConfig: {
