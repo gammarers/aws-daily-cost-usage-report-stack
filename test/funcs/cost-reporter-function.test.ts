@@ -1,21 +1,58 @@
 import { CostExplorerClient, GetCostAndUsageCommand } from '@aws-sdk/client-cost-explorer';
-import { IncomingWebhook } from '@slack/webhook';
+import { WebClient } from '@slack/web-api';
 import { Context } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
 import { handler, MissingEnvironmentVariableError, MissingInputVariableError, InvalidInputVariableError, EventInputType } from '../../src/funcs/cost-reporter.lambda';
 
+jest.mock('@slack/web-api');
+
 describe('Lambda Function Handler testing', () => {
 
   const ceClientMock = mockClient(CostExplorerClient);
+  //let postMessageSpy: jest.SpyInstance;
 
   beforeEach(() => {
     ceClientMock.reset();
+
+    // WebClientのインスタンス化時にモックされたレスポンスを返すように設定
+    (WebClient as unknown as jest.Mock).mockImplementation(() => {
+      return {
+        chat: {
+          postMessage: jest.fn().mockResolvedValue({ ok: true }),
+        },
+      };
+    });
+
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   // Slack Webhook mock.
-  jest
-    .spyOn(IncomingWebhook.prototype, 'send')
-    .mockImplementation();
+  // jest
+  //   .spyOn(WebClient.prototype, 'chat.postMessage')
+  //   .mockImplementation();
+
+  // jest.mock('@slack/web-api', () => {
+  //   const mSlack = {
+  //     auth: {
+  //       test: () => { return { ok: true }; },
+  //     },
+  //     chat: {
+  //       postMessage: () => {
+  //         return {
+  //           ok: true,
+  //         };
+  //       },
+  //     },
+  //   };
+  //   return { WebClient: jest.fn(() => mSlack) };
+  // });
+  // WebClient.chat.postMessage.mockResolvedValue({
+  //   ok: false,
+  //   error: 'too_many_attachments',
+  // });
 
   describe('Not beginning of the month...', () => {
     beforeEach(() => {
@@ -161,8 +198,8 @@ describe('Lambda Function Handler testing', () => {
             });
 
           process.env = {
-            SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-            SLACK_POST_CHANNEL: 'example-channel',
+            SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+            SLACK_CHANNEL: 'example-channel',
           };
           const result = await handler({ Type: EventInputType.SERVICES }, {} as Context);
 
@@ -200,8 +237,8 @@ describe('Lambda Function Handler testing', () => {
             .rejects();
 
           process.env = {
-            SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-            SLACK_POST_CHANNEL: 'example-channel',
+            SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+            SLACK_CHANNEL: 'example-channel',
           };
           const result = await handler({ Type: EventInputType.SERVICES }, {} as Context);
 
@@ -247,8 +284,8 @@ describe('Lambda Function Handler testing', () => {
             });
 
           process.env = {
-            SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-            SLACK_POST_CHANNEL: 'example-channel',
+            SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+            SLACK_CHANNEL: 'example-channel',
           };
           const result = await handler({ Type: EventInputType.SERVICES }, {} as Context);
 
@@ -433,8 +470,8 @@ describe('Lambda Function Handler testing', () => {
             });
 
           process.env = {
-            SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-            SLACK_POST_CHANNEL: 'example-channel',
+            SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+            SLACK_CHANNEL: 'example-channel',
           };
           const result = await handler({ Type: EventInputType.ACCOUNTS }, {} as Context);
 
@@ -473,8 +510,8 @@ describe('Lambda Function Handler testing', () => {
             .rejects();
 
           process.env = {
-            SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-            SLACK_POST_CHANNEL: 'example-channel',
+            SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+            SLACK_CHANNEL: 'example-channel',
           };
           const result = await handler({ Type: EventInputType.ACCOUNTS }, {} as Context);
 
@@ -521,8 +558,8 @@ describe('Lambda Function Handler testing', () => {
             });
 
           process.env = {
-            SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-            SLACK_POST_CHANNEL: 'example-channel',
+            SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+            SLACK_CHANNEL: 'example-channel',
           };
           const result = await handler({ Type: EventInputType.ACCOUNTS }, {} as Context);
 
@@ -640,8 +677,8 @@ describe('Lambda Function Handler testing', () => {
           });
 
         process.env = {
-          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-          SLACK_POST_CHANNEL: 'example-channel',
+          SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+          SLACK_CHANNEL: 'example-channel',
         };
         const result = await handler({ Type: EventInputType.SERVICES }, {} as Context);
 
@@ -656,13 +693,13 @@ describe('Lambda Function Handler testing', () => {
     describe('Should Environment Variable Error handling', () => {
       it('Should error cause MissingEnvironmentVariableError(SLACK_WEBHOOK_URL)', async () => {
         process.env = {
-          SLACK_POST_CHANNEL: 'example-channel',
+          SLACK_CHANNEL: 'example-channel',
         };
         await expect(handler({ Type: EventInputType.SERVICES }, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
       });
       it('Should error cause MissingEnvironmentVariableError(SLACK_POST_CHANNEL)', async () => {
         process.env = {
-          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
+          SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
         };
         await expect(handler({ Type: EventInputType.SERVICES }, {} as Context)).rejects.toThrow(MissingEnvironmentVariableError);
       });
@@ -670,15 +707,15 @@ describe('Lambda Function Handler testing', () => {
     describe('Should Event Input Variable Error handling', () => {
       it('Should error cause MissingInputVariableError(Type)', async () => {
         process.env = {
-          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-          SLACK_POST_CHANNEL: 'example-channel',
+          SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+          SLACK_CHANNEL: 'example-channel',
         };
         await expect(handler({ Type: '' as EventInputType }, {} as Context)).rejects.toThrow(MissingInputVariableError);
       });
       it('Should error cause InvalidInputVariableError(Type)', async () => {
         process.env = {
-          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/xxxxxxxxxx',
-          SLACK_POST_CHANNEL: 'example-channel',
+          SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
+          SLACK_CHANNEL: 'example-channel',
         };
         await expect(handler({ Type: 'Miss' as EventInputType }, {} as Context)).rejects.toThrow(InvalidInputVariableError);
       });
