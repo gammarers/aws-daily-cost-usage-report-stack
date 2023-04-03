@@ -1,5 +1,5 @@
 import { CostExplorerClient } from '@aws-sdk/client-cost-explorer';
-import { IncomingWebhook } from '@slack/webhook';
+import { WebClient } from '@slack/web-api';
 import { Context } from 'aws-lambda';
 import { GetAccountBillings, GetServiceBilling, GetTotalBilling } from './lib/get-billing-command';
 import { GetDateRange } from './lib/get-date-range';
@@ -48,17 +48,17 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
   console.log(`Context: ${JSON.stringify(context, null, 2)}`);
 
   // do validation
-  if (!process.env.SLACK_WEBHOOK_URL) {
-    throw new MissingEnvironmentVariableError('missing environment variable SLACK_WEBHOOK_URL.');
+  if (!process.env.SLACK_TOKEN) {
+    throw new MissingEnvironmentVariableError('missing environment variable SLACK_TOKEN.');
   }
-  if (!process.env.SLACK_POST_CHANNEL) {
-    throw new MissingEnvironmentVariableError('missing environment variable SLACK_POST_CHANNEL.');
+  if (!process.env.SLACK_CHANNEL) {
+    throw new MissingEnvironmentVariableError('missing environment variable SLACK_CHANNEL.');
   }
   if (!event.Type) {
     throw new MissingInputVariableError('missing input variable Type');
   } else {
     if (!Object.values(EventInputType).includes(event.Type)) {
-      throw new InvalidInputVariableError('invalid input variable Type is Account or Service.');
+      throw new InvalidInputVariableError('invalid input variable Type is Accounts or Services.');
     }
   }
 
@@ -95,14 +95,14 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
     }
   })();
 
-  const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL, {
-    icon_emoji: ':money-with-wings:',
-    channel: process.env.SLACK_POST_CHANNEL,
-  });
+  const client = new WebClient(process.env.SLACK_TOKEN);
+
+  const channel = process.env.SLACK_CHANNEL;
 
   // Send the notification
   await (async () => {
-    await webhook.send({
+    const result = await client.chat.postMessage({
+      channel,
       icon_emoji: ':money-with-wings:',
       text: `AWS Cost Reports (${dateRange.start} - ${dateRange.end})`,
       attachments: [
@@ -111,18 +111,26 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
           text: `${totalBilling?.amount} ${totalBilling?.unit}`,
           color: '#ff8c00',
         },
-        {
-          color: '#ffd700',
-          fields: fields?.map((filed) => {
-            return {
-              title: `:aws: ${filed.title}`,
-              value: filed.value,
-              short: false,
-            };
-          }),
-        },
       ],
     });
+    if (result.ok) {
+      await client.chat.postMessage({
+        channel,
+        thread_ts: result.ts,
+        attachments: [
+          {
+            color: '#ffd700',
+            fields: fields?.map((filed) => {
+              return {
+                title: `:aws: ${filed.title}`,
+                value: filed.value,
+                short: false,
+              };
+            }),
+          },
+        ],
+      });
+    }
   })();
 
   return 'OK';

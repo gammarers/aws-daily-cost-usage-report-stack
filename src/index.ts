@@ -6,8 +6,8 @@ import { Construct } from 'constructs';
 import { CostReporterFunction } from './funcs/cost-reporter-function';
 
 export interface DailyCostUsageReporterProps {
-  readonly slackWebhookUrl: string;
-  readonly slackPostChannel: string;
+  readonly slackToken: string;
+  readonly slackChannel: string;
   readonly scheduleTimezone?: string;
   readonly costGroupType: CostGroupType;
 }
@@ -59,8 +59,8 @@ export class DailyCostUsageReporter extends Construct {
       description: 'A function to archive logs s3 bucket from CloudWatch Logs.',
       environment: {
         //BUCKET_NAME: logArchiveBucket.bucketName,
-        SLACK_WEBHOOK_URL: props.slackWebhookUrl,
-        SLACK_POST_CHANNEL: props.slackPostChannel,
+        SLACK_TOKEN: props.slackToken,
+        SLACK_CHANNEL: props.slackChannel,
       },
       role: lambdaExecutionRole,
     });
