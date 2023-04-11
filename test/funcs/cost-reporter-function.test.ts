@@ -1,8 +1,9 @@
 import { CostExplorerClient, GetCostAndUsageCommand } from '@aws-sdk/client-cost-explorer';
 import { WebClient } from '@slack/web-api';
+import { MissingEnvironmentVariableError, MissingInputVariableError, InvalidInputVariableFormatError } from '@yicr/aws-lambda-errors';
 import { Context } from 'aws-lambda';
 import { mockClient } from 'aws-sdk-client-mock';
-import { handler, MissingEnvironmentVariableError, MissingInputVariableError, InvalidInputVariableError, EventInputType } from '../../src/funcs/cost-reporter.lambda';
+import { handler, EventInputType } from '../../src/funcs/cost-reporter.lambda';
 
 jest.mock('@slack/web-api');
 
@@ -717,7 +718,7 @@ describe('Lambda Function Handler testing', () => {
           SLACK_TOKEN: 'xxxx-xxxxxxxxx-xxxx',
           SLACK_CHANNEL: 'example-channel',
         };
-        await expect(handler({ Type: 'Miss' as EventInputType }, {} as Context)).rejects.toThrow(InvalidInputVariableError);
+        await expect(handler({ Type: 'Miss' as EventInputType }, {} as Context)).rejects.toThrow(InvalidInputVariableFormatError);
       });
     });
   });

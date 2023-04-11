@@ -1,29 +1,9 @@
 import { CostExplorerClient } from '@aws-sdk/client-cost-explorer';
 import { WebClient } from '@slack/web-api';
+import { MissingEnvironmentVariableError, MissingInputVariableError, InvalidInputVariableFormatError } from '@yicr/aws-lambda-errors';
 import { Context } from 'aws-lambda';
 import { GetAccountBillings, GetServiceBilling, GetTotalBilling } from './lib/get-billing-command';
 import { GetDateRange } from './lib/get-date-range';
-
-export class MissingEnvironmentVariableError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'MissingEnvironmentVariableError';
-  }
-}
-
-export class MissingInputVariableError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'MissingInputVariableError';
-  }
-}
-
-export class InvalidInputVariableError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'InvalidInputVariableError';
-  }
-}
 
 export interface EventInput {
   readonly Type: EventInputType;
@@ -58,7 +38,7 @@ export const handler = async (event: EventInput, context: Context): Promise<stri
     throw new MissingInputVariableError('missing input variable Type');
   } else {
     if (!Object.values(EventInputType).includes(event.Type)) {
-      throw new InvalidInputVariableError('invalid input variable Type is Accounts or Services.');
+      throw new InvalidInputVariableFormatError('invalid input variable format is Accounts or Services.');
     }
   }
 
