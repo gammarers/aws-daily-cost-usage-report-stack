@@ -2037,6 +2037,11 @@
   resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.7.tgz#8b1e39c547013941974d83ad5e9cf5042071a9a0"
   integrity sha512-sI1Ly2cODlWStkINzqGrZ8K6n+MTSbAeQnAipGyL+KZCXuHaRlj2gyyy8B/9MvsFFqN7XHryQnB2QwhzvJXovg==
 
+"@yicr/aws-lambda-errors@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@yicr/aws-lambda-errors/-/aws-lambda-errors-0.1.2.tgz#2e3aee71fd0f625739f8e036e68c3e6e4830b02a"
+  integrity sha512-A8oTW1PYF6Ja3MOXTfzuTocOha2+KZr6KDUUjYNhpkDV0DsFQYgFNBgtelopL3RQN+jFpPY0+VsRRD5ALhzpQQ==
+
 "@yicr/jest-serializer-cdk-asset@^0.2.20":
   version "0.2.20"
   resolved "https://registry.yarnpkg.com/@yicr/jest-serializer-cdk-asset/-/jest-serializer-cdk-asset-0.2.20.tgz#d6ad0bda4210d80095e2f95138d2b1e22a171a90"

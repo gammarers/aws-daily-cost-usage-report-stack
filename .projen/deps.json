@@ -33,6 +33,10 @@
       "type": "build"
     },
     {
+      "name": "@yicr/aws-lambda-errors",
+      "type": "build"
+    },
+    {
       "name": "@yicr/jest-serializer-cdk-asset",
       "type": "build"
     },
