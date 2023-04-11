@@ -14,10 +14,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
   devDeps: [
     'aws-sdk-client-mock',
     'aws-sdk-client-mock-jest',
-    '@yicr/jest-serializer-cdk-asset',
     '@aws-sdk/client-cost-explorer',
-    '@types/aws-lambda',
     '@slack/web-api',
+    '@types/aws-lambda',
+    '@yicr/aws-lambda-errors',
+    '@yicr/jest-serializer-cdk-asset',
   ],
   jestOptions: {
     jestConfig: {
