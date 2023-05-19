@@ -38,15 +38,15 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-cost-explorer": "^3.332.0",
+    "@aws-sdk/client-cost-explorer": "^3.335.0",
     "@slack/web-api": "^6.8.1",
     "@types/aws-lambda": "^8.10.115",
     "@types/jest": "^27",
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "@yicr/aws-lambda-errors": "^0.2.37",
-    "@yicr/jest-serializer-cdk-asset": "^0.2.57",
+    "@yicr/aws-lambda-errors": "^0.2.38",
+    "@yicr/jest-serializer-cdk-asset": "^0.2.58",
     "aws-cdk-lib": "2.60.0",
     "aws-sdk-client-mock": "^2.1.1",
     "aws-sdk-client-mock-jest": "^2.1.1",
@@ -63,7 +63,7 @@
     "jsii-docgen": "^7.2.9",
     "jsii-pacmak": "^1.81.0",
     "npm-check-updates": "^16",
-    "projen": "^0.71.62",
+    "projen": "^0.71.64",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
@@ -74,8 +74,8 @@
     "constructs": "^10.0.5"
   },
   "resolutions": {
-    "@types/prettier": "2.6.0",
-    "@types/babel__traverse": "7.18.2"
+    "@types/babel__traverse": "7.18.2",
+    "@types/prettier": "2.6.0"
   },
   "keywords": [
     "aws",
