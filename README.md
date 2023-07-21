@@ -26,6 +26,12 @@ npm install @gammarer/aws-daily-cost-usage-repoter
 yarn add @gammarer/aws-daily-cost-usage-repoter
 ```
 
+### Python
+
+```shell
+pip install gammarer.aws-daily-cost-usage-repoter
+```
+
 ## Example
 
 ```shell
