@@ -49,5 +49,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['yicr'],
   },
+  publishToPypi: {
+    distName: 'gammarer.aws-daily-cost-usage-reporter',
+    module: 'gammarer.aws_daily_cost_usage_reporter',
+  },
 });
 project.synth();
