@@ -888,6 +888,14 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.44.0.tgz#961a5903c74139390478bdc808bcde3fc45ab7af"
   integrity sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==
 
+"@gammarer/jest-serializer-aws-cdk-asset-filename-replacer@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@gammarer/jest-serializer-aws-cdk-asset-filename-replacer/-/jest-serializer-aws-cdk-asset-filename-replacer-0.3.2.tgz#de140f8d2dae3d3492717ceebb22956625b9d76e"
+  integrity sha512-qPq/AJUfCaxaUqY2fXSe3+ZTIpS0dBHsE+6wp48k6CHlwCfM/t2Z7uYDNg0RjAAnhb3tom5ZfvrFKuERMq1aRw==
+  dependencies:
+    aws-cdk-lib "^2.88.0"
+    constructs "^10.2.69"
+
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.10.tgz#5a3ffe32cc9306365fb3fd572596cd602d5e12d2"
@@ -2130,14 +2138,6 @@
   resolved "https://registry.yarnpkg.com/@yicr/aws-lambda-errors/-/aws-lambda-errors-0.2.99.tgz#105a3d60909cef35d4182951171bb73b3b42a3aa"
   integrity sha512-25ShCZlT5A/B0huduKnji6xZ0PMMLxxz4KqcHncVsj6aW1gqfadYwrey6NyhxgLN6LwkcTtcDZm1D5mZNeVJKg==
 
-"@yicr/jest-serializer-cdk-asset@^0.2.118":
-  version "0.2.118"
-  resolved "https://registry.yarnpkg.com/@yicr/jest-serializer-cdk-asset/-/jest-serializer-cdk-asset-0.2.118.tgz#d0b919bc0edecb3a10dfae4ade1e95601ebf5d19"
-  integrity sha512-tYw7TApjVoL0nj6797JvnmEe2ITkB9hQAhWSB1JrwJ+REQ1YQtDYk3PxYvarw7jiD4lALWqBnmU1N0aestO/+g==
-  dependencies:
-    aws-cdk-lib "^2.87.0"
-    constructs "^10.2.69"
-
 JSONStream@^1.0.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.5.tgz#3208c1f08d3a4d99261ab64f92302bc15e111ca0"
@@ -2433,7 +2433,7 @@ aws-cdk-lib@2.60.0:
     semver "^7.3.8"
     yaml "1.10.2"
 
-aws-cdk-lib@^2.87.0:
+aws-cdk-lib@^2.88.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/aws-cdk-lib/-/aws-cdk-lib-2.88.0.tgz#72d165cb7dc168c5fa3b22caaacd8d33364866fc"
   integrity sha512-bmhokh30HVeqlotWaoEmK7mKB9SJbJwpbsiVgmYe3JcMu8DposHQqaIPI7LnC+dg015tZaxUsExxOYBEw+vntQ==

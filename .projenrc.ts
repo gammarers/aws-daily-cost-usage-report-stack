@@ -18,11 +18,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@slack/web-api',
     '@types/aws-lambda',
     '@yicr/aws-lambda-errors',
-    '@yicr/jest-serializer-cdk-asset',
+    '@gammarer/jest-serializer-aws-cdk-asset-filename-replacer',
   ],
   jestOptions: {
     jestConfig: {
-      snapshotSerializers: ['<rootDir>/node_modules/@yicr/jest-serializer-cdk-asset'],
+      snapshotSerializers: ['<rootDir>/node_modules/@gammarer/jest-serializer-aws-cdk-asset-filename-replacer'],
     },
     extraCliOptions: ['--silent'],
   },
