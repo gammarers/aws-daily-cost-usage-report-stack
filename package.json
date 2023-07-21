@@ -1,5 +1,5 @@
 {
-  "name": "@yicr/aws-daily-cost-usage-reporter",
+  "name": "@gammarer/aws-daily-cost-usage-reporter",
   "description": "Cost & Usage Reports",
   "repository": {
     "type": "git",

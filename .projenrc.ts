@@ -4,7 +4,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorAddress: 'yicr@users.noreply.github.com',
   cdkVersion: '2.60.0',
   defaultReleaseBranch: 'main',
-  name: '@yicr/aws-daily-cost-usage-reporter',
+  name: '@gammarer/aws-daily-cost-usage-reporter',
   description: 'Cost & Usage Reports',
   keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports', 'slack'],
   projenrcTs: true,
