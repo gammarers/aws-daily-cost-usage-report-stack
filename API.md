@@ -21,21 +21,25 @@ This construct creating resource list.
 ### TypeScript
 
 ```shell
-npm install @yicr/aws-daily-cost-usage-repoter
+npm install @gammarer/aws-daily-cost-usage-repoter
+# or
+yarn add @gammarer/aws-daily-cost-usage-repoter
 ```
-or
+
+### Python
+
 ```shell
-yarn add @yicr/aws-daily-cost-usage-repoter
+pip install gammarer.aws-daily-cost-usage-repoter
 ```
 
 ## Example
 
 ```shell
-npm install @yicr/aws-daily-cost-usage-repoter
+npm install @gammarer/aws-daily-cost-usage-repoter
 ```
 
 ```typescript
-import { CostGroupType, DailyCostUsageReporter } from '@yicr/aws-daily-cost-usage-repoter';
+import { CostGroupType, DailyCostUsageReporter } from '@gammarer/aws-daily-cost-usage-repoter';
 
 new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
   slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx', // already created slack webhook url
@@ -56,39 +60,39 @@ This project is licensed under the Apache-2.0 License.
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
-### DailyCostUsageReporter <a name="DailyCostUsageReporter" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter"></a>
+### DailyCostUsageReporter <a name="DailyCostUsageReporter" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter"></a>
 
-#### Initializers <a name="Initializers" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer"></a>
+#### Initializers <a name="Initializers" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer"></a>
 
 ```typescript
-import { DailyCostUsageReporter } from '@yicr/aws-daily-cost-usage-reporter'
+import { DailyCostUsageReporter } from '@gammarer/aws-daily-cost-usage-reporter'
 
 new DailyCostUsageReporter(scope: Construct, id: string, props: DailyCostUsageReporterProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.props">props</a></code> | <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps">DailyCostUsageReporterProps</a></code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.props">props</a></code> | <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps">DailyCostUsageReporterProps</a></code> | *No description.* |
 
 ---
 
-##### `scope`<sup>Required</sup> <a name="scope" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.scope"></a>
 
 - *Type:* constructs.Construct
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="id" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.id"></a>
 
 - *Type:* string
 
 ---
 
-##### `props`<sup>Required</sup> <a name="props" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.Initializer.parameter.props"></a>
 
-- *Type:* <a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps">DailyCostUsageReporterProps</a>
+- *Type:* <a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps">DailyCostUsageReporterProps</a>
 
 ---
 
@@ -96,11 +100,11 @@ new DailyCostUsageReporter(scope: Construct, id: string, props: DailyCostUsageRe
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.toString">toString</a></code> | Returns a string representation of this construct. |
 
 ---
 
-##### `toString` <a name="toString" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.toString"></a>
+##### `toString` <a name="toString" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.toString"></a>
 
 ```typescript
 public toString(): string
@@ -112,14 +116,14 @@ Returns a string representation of this construct.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 
 ---
 
-##### `isConstruct` <a name="isConstruct" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct"></a>
+##### `isConstruct` <a name="isConstruct" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct"></a>
 
 ```typescript
-import { DailyCostUsageReporter } from '@yicr/aws-daily-cost-usage-reporter'
+import { DailyCostUsageReporter } from '@gammarer/aws-daily-cost-usage-reporter'
 
 DailyCostUsageReporter.isConstruct(x: any)
 ```
@@ -140,7 +144,7 @@ library can be accidentally installed, and `instanceof` will behave
 unpredictably. It is safest to avoid using `instanceof`, and using
 this type-testing method instead.
 
-###### `x`<sup>Required</sup> <a name="x" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct.parameter.x"></a>
+###### `x`<sup>Required</sup> <a name="x" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct.parameter.x"></a>
 
 - *Type:* any
 
@@ -152,11 +156,11 @@ Any object.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 
 ---
 
-##### `node`<sup>Required</sup> <a name="node" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporter.property.node"></a>
+##### `node`<sup>Required</sup> <a name="node" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.property.node"></a>
 
 ```typescript
 public readonly node: Node;
@@ -171,12 +175,12 @@ The tree node.
 
 ## Structs <a name="Structs" id="Structs"></a>
 
-### DailyCostUsageReporterProps <a name="DailyCostUsageReporterProps" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps"></a>
+### DailyCostUsageReporterProps <a name="DailyCostUsageReporterProps" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps"></a>
 
-#### Initializer <a name="Initializer" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.Initializer"></a>
+#### Initializer <a name="Initializer" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.Initializer"></a>
 
 ```typescript
-import { DailyCostUsageReporterProps } from '@yicr/aws-daily-cost-usage-reporter'
+import { DailyCostUsageReporterProps } from '@gammarer/aws-daily-cost-usage-reporter'
 
 const dailyCostUsageReporterProps: DailyCostUsageReporterProps = { ... }
 ```
@@ -185,24 +189,24 @@ const dailyCostUsageReporterProps: DailyCostUsageReporterProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.costGroupType">costGroupType</a></code> | <code><a href="#@yicr/aws-daily-cost-usage-reporter.CostGroupType">CostGroupType</a></code> | *No description.* |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackChannel">slackChannel</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackToken">slackToken</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.scheduleTimezone">scheduleTimezone</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.costGroupType">costGroupType</a></code> | <code><a href="#@gammarer/aws-daily-cost-usage-reporter.CostGroupType">CostGroupType</a></code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackChannel">slackChannel</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackToken">slackToken</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.scheduleTimezone">scheduleTimezone</a></code> | <code>string</code> | *No description.* |
 
 ---
 
-##### `costGroupType`<sup>Required</sup> <a name="costGroupType" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.costGroupType"></a>
+##### `costGroupType`<sup>Required</sup> <a name="costGroupType" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.costGroupType"></a>
 
 ```typescript
 public readonly costGroupType: CostGroupType;
 ```
 
-- *Type:* <a href="#@yicr/aws-daily-cost-usage-reporter.CostGroupType">CostGroupType</a>
+- *Type:* <a href="#@gammarer/aws-daily-cost-usage-reporter.CostGroupType">CostGroupType</a>
 
 ---
 
-##### `slackChannel`<sup>Required</sup> <a name="slackChannel" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackChannel"></a>
+##### `slackChannel`<sup>Required</sup> <a name="slackChannel" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackChannel"></a>
 
 ```typescript
 public readonly slackChannel: string;
@@ -212,7 +216,7 @@ public readonly slackChannel: string;
 
 ---
 
-##### `slackToken`<sup>Required</sup> <a name="slackToken" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackToken"></a>
+##### `slackToken`<sup>Required</sup> <a name="slackToken" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.slackToken"></a>
 
 ```typescript
 public readonly slackToken: string;
@@ -222,7 +226,7 @@ public readonly slackToken: string;
 
 ---
 
-##### `scheduleTimezone`<sup>Optional</sup> <a name="scheduleTimezone" id="@yicr/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.scheduleTimezone"></a>
+##### `scheduleTimezone`<sup>Optional</sup> <a name="scheduleTimezone" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporterProps.property.scheduleTimezone"></a>
 
 ```typescript
 public readonly scheduleTimezone: string;
@@ -236,23 +240,23 @@ public readonly scheduleTimezone: string;
 
 ## Enums <a name="Enums" id="Enums"></a>
 
-### CostGroupType <a name="CostGroupType" id="@yicr/aws-daily-cost-usage-reporter.CostGroupType"></a>
+### CostGroupType <a name="CostGroupType" id="@gammarer/aws-daily-cost-usage-reporter.CostGroupType"></a>
 
 #### Members <a name="Members" id="Members"></a>
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.CostGroupType.ACCOUNTS">ACCOUNTS</a></code> | *No description.* |
-| <code><a href="#@yicr/aws-daily-cost-usage-reporter.CostGroupType.SERVICES">SERVICES</a></code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.CostGroupType.ACCOUNTS">ACCOUNTS</a></code> | *No description.* |
+| <code><a href="#@gammarer/aws-daily-cost-usage-reporter.CostGroupType.SERVICES">SERVICES</a></code> | *No description.* |
 
 ---
 
-##### `ACCOUNTS` <a name="ACCOUNTS" id="@yicr/aws-daily-cost-usage-reporter.CostGroupType.ACCOUNTS"></a>
+##### `ACCOUNTS` <a name="ACCOUNTS" id="@gammarer/aws-daily-cost-usage-reporter.CostGroupType.ACCOUNTS"></a>
 
 ---
 
 
-##### `SERVICES` <a name="SERVICES" id="@yicr/aws-daily-cost-usage-reporter.CostGroupType.SERVICES"></a>
+##### `SERVICES` <a name="SERVICES" id="@gammarer/aws-daily-cost-usage-reporter.CostGroupType.SERVICES"></a>
 
 ---
 

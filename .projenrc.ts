@@ -4,7 +4,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorAddress: 'yicr@users.noreply.github.com',
   cdkVersion: '2.60.0',
   defaultReleaseBranch: 'main',
-  name: '@yicr/aws-daily-cost-usage-reporter',
+  name: '@gammarer/aws-daily-cost-usage-reporter',
   description: 'Cost & Usage Reports',
   keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports', 'slack'],
   projenrcTs: true,
@@ -18,11 +18,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@slack/web-api',
     '@types/aws-lambda',
     '@yicr/aws-lambda-errors',
-    '@yicr/jest-serializer-cdk-asset',
+    '@gammarer/jest-serializer-aws-cdk-asset-filename-replacer',
   ],
   jestOptions: {
     jestConfig: {
-      snapshotSerializers: ['<rootDir>/node_modules/@yicr/jest-serializer-cdk-asset'],
+      snapshotSerializers: ['<rootDir>/node_modules/@gammarer/jest-serializer-aws-cdk-asset-filename-replacer'],
     },
     extraCliOptions: ['--silent'],
   },
@@ -48,6 +48,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   autoApproveOptions: {
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['yicr'],
+  },
+  publishToPypi: {
+    distName: 'gammarer.aws-daily-cost-usage-reporter',
+    module: 'gammarer.aws_daily_cost_usage_reporter',
   },
 });
 project.synth();

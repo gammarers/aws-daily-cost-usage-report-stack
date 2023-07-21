@@ -1,5 +1,5 @@
 {
-  "name": "@yicr/aws-daily-cost-usage-reporter",
+  "name": "@gammarer/aws-daily-cost-usage-reporter",
   "description": "Cost & Usage Reports",
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
+    "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@aws-sdk/client-cost-explorer": "^3.370.0",
+    "@gammarer/jest-serializer-aws-cdk-asset-filename-replacer": "^0.3.2",
     "@slack/web-api": "^6.8.1",
     "@types/aws-lambda": "^8.10.119",
     "@types/jest": "^27",
@@ -46,7 +48,6 @@
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "@yicr/aws-lambda-errors": "^0.2.99",
-    "@yicr/jest-serializer-cdk-asset": "^0.2.118",
     "aws-cdk-lib": "2.60.0",
     "aws-sdk-client-mock": "^2.2.0",
     "aws-sdk-client-mock-jest": "^2.2.0",
@@ -97,7 +98,7 @@
   "version": "0.0.0",
   "jest": {
     "snapshotSerializers": [
-      "<rootDir>/node_modules/@yicr/jest-serializer-cdk-asset"
+      "<rootDir>/node_modules/@gammarer/jest-serializer-aws-cdk-asset-filename-replacer"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.ts?(x)",
@@ -142,7 +143,12 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {},
+    "targets": {
+      "python": {
+        "distName": "gammarer.aws-daily-cost-usage-reporter",
+        "module": "gammarer.aws_daily_cost_usage_reporter"
+      }
+    },
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
