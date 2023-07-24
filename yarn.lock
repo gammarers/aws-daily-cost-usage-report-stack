@@ -864,9 +864,9 @@
     eslint-visitor-keys "^3.3.0"
 
 "@eslint-community/regexpp@^4.4.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.6.0.tgz#5b63f0df5528a44e28aa8578d393de908cc3d4d0"
-  integrity sha512-uiPeRISaglZnaZk8vwrjQZ1CxogZeY/4IYft6gBOTqu1WhVXWmCmZMWxUv2Q/pxSvPdp1JPaO62kLOcOkMqWrw==
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.6.1.tgz#0b371c118b8e4ebf9dbddb56120ab4befd791211"
+  integrity sha512-O7x6dMstWLn2ktjcoiNLDkAGG2EjveHL+Vvc+n0fXumkJYAcSqcVYKtwDU+hDZ0uDUsnUagSYaZrOLAYE8un1A==
 
 "@eslint/eslintrc@^2.1.0":
   version "2.1.0"
@@ -888,10 +888,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.44.0.tgz#961a5903c74139390478bdc808bcde3fc45ab7af"
   integrity sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==
 
-"@gammarer/jest-serializer-aws-cdk-asset-filename-replacer@^0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@gammarer/jest-serializer-aws-cdk-asset-filename-replacer/-/jest-serializer-aws-cdk-asset-filename-replacer-0.3.5.tgz#3837a2300692363fb8e1bebad1a2d5445de423d2"
-  integrity sha512-fQjamcGvfuFtjKqguGmpuOss9g/fe7noQGSC9TLZv97i/dg/sVcetWxYSPSysUvrF+85nW7T3epm28SJC8Hw3g==
+"@gammarer/jest-serializer-aws-cdk-asset-filename-replacer@^0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@gammarer/jest-serializer-aws-cdk-asset-filename-replacer/-/jest-serializer-aws-cdk-asset-filename-replacer-0.3.6.tgz#28ace1bf23c8ae7541a1c02b94d478ba0c581487"
+  integrity sha512-2vyXXwveoJWIRlBzWBgqrJWeHIxc2yZiZ3UCSMKjW7uFQ2xvIiIDi2jo24ofSg5FKNEsjgoce7X+XAuG1ajy7g==
   dependencies:
     aws-cdk-lib "^2.88.0"
     constructs "^10.2.69"
@@ -2133,10 +2133,10 @@
   resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.10.tgz#a1337ca426aa61cef9fe15b5b28e340a72f6fa99"
   integrity sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==
 
-"@yicr/aws-lambda-errors@^0.2.102":
-  version "0.2.102"
-  resolved "https://registry.yarnpkg.com/@yicr/aws-lambda-errors/-/aws-lambda-errors-0.2.102.tgz#c358eba0836e572dcc1dc20185987d08e450def7"
-  integrity sha512-q6UF9y01Vf/Lc1D8JcOUpPpRFhqpFhOctA6/Tz4asLqh8V6Bioa0jW0+1DNZdeBsDyu1uFoUyzh3Ufj6BXzRIw==
+"@yicr/aws-lambda-errors@^0.2.103":
+  version "0.2.103"
+  resolved "https://registry.yarnpkg.com/@yicr/aws-lambda-errors/-/aws-lambda-errors-0.2.103.tgz#242a0e306db8c937286522a12c18214d4cf88e9d"
+  integrity sha512-lByDOejJxoJx4fXMw4ut51nldOW6jjV4ToyU/016WLhEpUEtVEgYHMqY+vaBSJJ2J1GGZHInJcx/eGyOL1G/kA==
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -3395,9 +3395,9 @@ eastasianwidth@^0.2.0:
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
 electron-to-chromium@^1.4.431:
-  version "1.4.468"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.468.tgz#3cbf64ad67d9f12bfe69fefe5eb1935ec4f6ab7a"
-  integrity sha512-6M1qyhaJOt7rQtNti1lBA0GwclPH+oKCmsra/hkcWs5INLxfXXD/dtdnaKUYQu/pjOBP/8Osoe4mAcNvvzoFag==
+  version "1.4.469"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.469.tgz#c9cea85ab94031e239ca4ab03158726672d6f960"
+  integrity sha512-HRN9XQjElxJBrdDky5iiUUr3eDwXGTg6Cp4IV8MuNc8VqMkYSneSnIe6poFKx9PsNzkudCgaWCBVxwDqirwQWQ==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -6640,10 +6640,10 @@ progress@^2.0.3:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.71.148:
-  version "0.71.148"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.71.148.tgz#a741e8ec8eff86701fcadf35ff11c539f6715d91"
-  integrity sha512-oIfQX4LjES0S5AoLeKi6fabEAeNMWRIX9jOL3VGIj1wM3VDofPwW8US6znZrqDeyuyz+ND9UbO7f8mhn2RfNgQ==
+projen@^0.71.149:
+  version "0.71.149"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.71.149.tgz#d21851d6965383200cbcebb178346a39f87a78d6"
+  integrity sha512-przNNUS921ulTo8z5aB46GG3hR4JhqK+65SggXrAJJZRasfkteJFIGfGcB+28G0NRCt0eRH8Y8CGcHrYK6bJeQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
