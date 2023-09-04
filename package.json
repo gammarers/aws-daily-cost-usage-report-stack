@@ -20,6 +20,7 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
+    "package:java": "npx projen package:java",
     "package:js": "npx projen package:js",
     "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
@@ -48,7 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "@yicr/aws-lambda-errors": "^0.2.138",
-    "aws-cdk-lib": "2.60.0",
+    "aws-cdk-lib": "2.80.0",
     "aws-sdk-client-mock": "^2.2.0",
     "aws-sdk-client-mock-jest": "^2.2.0",
     "constructs": "10.0.5",
@@ -59,25 +60,21 @@
     "eslint-plugin-import": "^2.28.1",
     "jest": "^27",
     "jest-junit": "^15",
-    "jsii": "1.x",
+    "jsii": "~5.0.0",
     "jsii-diff": "^1.88.0",
     "jsii-docgen": "^7.2.9",
     "jsii-pacmak": "^1.88.0",
-    "jsii-rosetta": "1.x",
+    "jsii-rosetta": "~5.0.0",
     "npm-check-updates": "^16",
     "projen": "^0.73.0",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "typescript": "4.9.x"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.60.0",
+    "aws-cdk-lib": "^2.80.0",
     "constructs": "^10.0.5"
-  },
-  "resolutions": {
-    "@types/babel__traverse": "7.18.2",
-    "@types/prettier": "2.6.0"
   },
   "keywords": [
     "aws",
@@ -144,6 +141,13 @@
   "jsii": {
     "outdir": "dist",
     "targets": {
+      "java": {
+        "package": "com.gammarer.cdk.aws.daily_cost_usage_reporter",
+        "maven": {
+          "groupId": "com.gammarer",
+          "artifactId": "aws-daily-cost-usage-reporter"
+        }
+      },
       "python": {
         "distName": "gammarer.aws-daily-cost-usage-reporter",
         "module": "gammarer.aws_daily_cost_usage_reporter"
