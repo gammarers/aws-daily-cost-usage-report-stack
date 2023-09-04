@@ -4,6 +4,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorAddress: 'yicr@users.noreply.github.com',
   cdkVersion: '2.80.0',
   typescriptVersion: '4.9.x',
+  jsiiVersion: '~5.0.0',
   defaultReleaseBranch: 'main',
   name: '@gammarer/aws-daily-cost-usage-reporter',
   description: 'Cost & Usage Reports',
