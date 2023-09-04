@@ -57,7 +57,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   publishToMaven: {
     mavenGroupId: 'com.gammarer',
-    javaPackage: 'com.gammarer.cdk.aws.daily-cost-usage-reporter',
+    javaPackage: 'com.gammarer.cdk.aws.daily_cost_usage_reporter',
     mavenArtifactId: 'aws-daily-cost-usage-reporter',
     mavenEndpoint: 'https://s01.oss.sonatype.org',
   },
