@@ -52,10 +52,6 @@
       "type": "build"
     },
     {
-      "name": "eslint-import-resolver-node",
-      "type": "build"
-    },
-    {
       "name": "eslint-import-resolver-typescript",
       "type": "build"
     },
@@ -91,17 +87,12 @@
     },
     {
       "name": "jsii-rosetta",
-      "version": "~5.0.0",
+      "version": "5.1.x",
       "type": "build"
     },
     {
       "name": "jsii",
-      "version": "~5.0.0",
-      "type": "build"
-    },
-    {
-      "name": "npm-check-updates",
-      "version": "^16",
+      "version": "5.1.x",
       "type": "build"
     },
     {
@@ -123,7 +114,7 @@
     },
     {
       "name": "typescript",
-      "version": "4.9.x",
+      "version": "5.1.x",
       "type": "build"
     },
     {

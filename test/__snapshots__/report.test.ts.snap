@@ -1,27 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CostUsageReports Construct Testing CostUsageReport Construct Normal(all arguments) Testing Should match snapshot: report-timezone 1`] = `
-Object {
-  "Parameters": Object {
-    "BootstrapVersion": Object {
+{
+  "Parameters": {
+    "BootstrapVersion": {
       "Default": "/cdk-bootstrap/hnb659fds/version",
       "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
       "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
-  "Resources": Object {
-    "DailyCostUsageReporterCostReporterFunction100AA295": Object {
-      "DependsOn": Array [
+  "Resources": {
+    "DailyCostUsageReporterCostReporterFunction100AA295": {
+      "DependsOn": [
         "DailyCostUsageReporterLambdaExecutionRoleE9CFFB32",
       ],
-      "Properties": Object {
-        "Code": Object {
+      "Properties": {
+        "Code": {
           "S3Bucket": "cdk-hnb659fds-assets-123456789012-us-east-1",
           "S3Key": "HASH.zip",
         },
         "Description": "A function to archive logs s3 bucket from CloudWatch Logs.",
-        "Environment": Object {
-          "Variables": Object {
+        "Environment": {
+          "Variables": {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_CHANNEL": "example-channel",
             "SLACK_TOKEN": "xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX",
@@ -29,8 +29,8 @@ Object {
         },
         "FunctionName": "cost-report-d83e5229-func",
         "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
+        "Role": {
+          "Fn::GetAtt": [
             "DailyCostUsageReporterLambdaExecutionRoleE9CFFB32",
             "Arn",
           ],
@@ -39,27 +39,27 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "DailyCostUsageReporterLambdaExecutionRoleE9CFFB32": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "DailyCostUsageReporterLambdaExecutionRoleE9CFFB32": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
@@ -67,11 +67,11 @@ Object {
             ],
           },
         ],
-        "Policies": Array [
-          Object {
-            "PolicyDocument": Object {
-              "Statement": Array [
-                Object {
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
                   "Action": "ce:GetCostAndUsage",
                   "Effect": "Allow",
                   "Resource": "*",
@@ -86,30 +86,30 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "DailyCostUsageReporterSchedule211E3EDE": Object {
-      "Properties": Object {
+    "DailyCostUsageReporterSchedule211E3EDE": {
+      "Properties": {
         "Description": "aws account 123456789012 const reports.",
-        "FlexibleTimeWindow": Object {
+        "FlexibleTimeWindow": {
           "Mode": "OFF",
         },
         "Name": "daily-cost-report-123456789012-schedule",
         "ScheduleExpression": "cron(1 9 * * ? *)",
         "ScheduleExpressionTimezone": "Asia/Tokyo",
         "State": "ENABLED",
-        "Target": Object {
-          "Arn": Object {
-            "Fn::GetAtt": Array [
+        "Target": {
+          "Arn": {
+            "Fn::GetAtt": [
               "DailyCostUsageReporterCostReporterFunction100AA295",
               "Arn",
             ],
           },
           "Input": "{"Type":"Services"}",
-          "RetryPolicy": Object {
+          "RetryPolicy": {
             "MaximumEventAgeInSeconds": 60,
             "MaximumRetryAttempts": 0,
           },
-          "RoleArn": Object {
-            "Fn::GetAtt": Array [
+          "RoleArn": {
+            "Fn::GetAtt": [
               "DailyCostUsageReporterSchedulerExecutionRole8D20F239",
               "Arn",
             ],
@@ -118,40 +118,40 @@ Object {
       },
       "Type": "AWS::Scheduler::Schedule",
     },
-    "DailyCostUsageReporterSchedulerExecutionRole8D20F239": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "DailyCostUsageReporterSchedulerExecutionRole8D20F239": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "scheduler.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "Policies": Array [
-          Object {
-            "PolicyDocument": Object {
-              "Statement": Array [
-                Object {
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
                   "Action": "lambda:InvokeFunction",
                   "Effect": "Allow",
-                  "Resource": Array [
-                    Object {
-                      "Fn::GetAtt": Array [
+                  "Resource": [
+                    {
+                      "Fn::GetAtt": [
                         "DailyCostUsageReporterCostReporterFunction100AA295",
                         "Arn",
                       ],
                     },
-                    Object {
-                      "Fn::Join": Array [
+                    {
+                      "Fn::Join": [
                         "",
-                        Array [
-                          Object {
-                            "Fn::GetAtt": Array [
+                        [
+                          {
+                            "Fn::GetAtt": [
                               "DailyCostUsageReporterCostReporterFunction100AA295",
                               "Arn",
                             ],
@@ -173,22 +173,22 @@ Object {
       "Type": "AWS::IAM::Role",
     },
   },
-  "Rules": Object {
-    "CheckBootstrapVersion": Object {
-      "Assertions": Array [
-        Object {
-          "Assert": Object {
-            "Fn::Not": Array [
-              Object {
-                "Fn::Contains": Array [
-                  Array [
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
                     "1",
                     "2",
                     "3",
                     "4",
                     "5",
                   ],
-                  Object {
+                  {
                     "Ref": "BootstrapVersion",
                   },
                 ],
@@ -204,27 +204,27 @@ Object {
 `;
 
 exports[`CostUsageReports Construct Testing CostUsageReport Construct Normal(only required arguments) Testing Should match snapshot: report 1`] = `
-Object {
-  "Parameters": Object {
-    "BootstrapVersion": Object {
+{
+  "Parameters": {
+    "BootstrapVersion": {
       "Default": "/cdk-bootstrap/hnb659fds/version",
       "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
       "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
-  "Resources": Object {
-    "DailyCostUsageReporterCostReporterFunction100AA295": Object {
-      "DependsOn": Array [
+  "Resources": {
+    "DailyCostUsageReporterCostReporterFunction100AA295": {
+      "DependsOn": [
         "DailyCostUsageReporterLambdaExecutionRoleE9CFFB32",
       ],
-      "Properties": Object {
-        "Code": Object {
+      "Properties": {
+        "Code": {
           "S3Bucket": "cdk-hnb659fds-assets-123456789012-us-east-1",
           "S3Key": "HASH.zip",
         },
         "Description": "A function to archive logs s3 bucket from CloudWatch Logs.",
-        "Environment": Object {
-          "Variables": Object {
+        "Environment": {
+          "Variables": {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
             "SLACK_CHANNEL": "example-channel",
             "SLACK_TOKEN": "xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX",
@@ -232,8 +232,8 @@ Object {
         },
         "FunctionName": "cost-report-d83e5229-func",
         "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
+        "Role": {
+          "Fn::GetAtt": [
             "DailyCostUsageReporterLambdaExecutionRoleE9CFFB32",
             "Arn",
           ],
@@ -242,27 +242,27 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "DailyCostUsageReporterLambdaExecutionRoleE9CFFB32": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "DailyCostUsageReporterLambdaExecutionRoleE9CFFB32": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
@@ -270,11 +270,11 @@ Object {
             ],
           },
         ],
-        "Policies": Array [
-          Object {
-            "PolicyDocument": Object {
-              "Statement": Array [
-                Object {
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
                   "Action": "ce:GetCostAndUsage",
                   "Effect": "Allow",
                   "Resource": "*",
@@ -289,30 +289,30 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "DailyCostUsageReporterSchedule211E3EDE": Object {
-      "Properties": Object {
+    "DailyCostUsageReporterSchedule211E3EDE": {
+      "Properties": {
         "Description": "aws account 123456789012 const reports.",
-        "FlexibleTimeWindow": Object {
+        "FlexibleTimeWindow": {
           "Mode": "OFF",
         },
         "Name": "daily-cost-report-123456789012-schedule",
         "ScheduleExpression": "cron(1 9 * * ? *)",
         "ScheduleExpressionTimezone": "UTC",
         "State": "ENABLED",
-        "Target": Object {
-          "Arn": Object {
-            "Fn::GetAtt": Array [
+        "Target": {
+          "Arn": {
+            "Fn::GetAtt": [
               "DailyCostUsageReporterCostReporterFunction100AA295",
               "Arn",
             ],
           },
           "Input": "{"Type":"Services"}",
-          "RetryPolicy": Object {
+          "RetryPolicy": {
             "MaximumEventAgeInSeconds": 60,
             "MaximumRetryAttempts": 0,
           },
-          "RoleArn": Object {
-            "Fn::GetAtt": Array [
+          "RoleArn": {
+            "Fn::GetAtt": [
               "DailyCostUsageReporterSchedulerExecutionRole8D20F239",
               "Arn",
             ],
@@ -321,40 +321,40 @@ Object {
       },
       "Type": "AWS::Scheduler::Schedule",
     },
-    "DailyCostUsageReporterSchedulerExecutionRole8D20F239": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "DailyCostUsageReporterSchedulerExecutionRole8D20F239": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "scheduler.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "Policies": Array [
-          Object {
-            "PolicyDocument": Object {
-              "Statement": Array [
-                Object {
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
                   "Action": "lambda:InvokeFunction",
                   "Effect": "Allow",
-                  "Resource": Array [
-                    Object {
-                      "Fn::GetAtt": Array [
+                  "Resource": [
+                    {
+                      "Fn::GetAtt": [
                         "DailyCostUsageReporterCostReporterFunction100AA295",
                         "Arn",
                       ],
                     },
-                    Object {
-                      "Fn::Join": Array [
+                    {
+                      "Fn::Join": [
                         "",
-                        Array [
-                          Object {
-                            "Fn::GetAtt": Array [
+                        [
+                          {
+                            "Fn::GetAtt": [
                               "DailyCostUsageReporterCostReporterFunction100AA295",
                               "Arn",
                             ],
@@ -376,22 +376,22 @@ Object {
       "Type": "AWS::IAM::Role",
     },
   },
-  "Rules": Object {
-    "CheckBootstrapVersion": Object {
-      "Assertions": Array [
-        Object {
-          "Assert": Object {
-            "Fn::Not": Array [
-              Object {
-                "Fn::Contains": Array [
-                  Array [
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
                     "1",
                     "2",
                     "3",
                     "4",
                     "5",
                   ],
-                  Object {
+                  {
                     "Ref": "BootstrapVersion",
                   },
                 ],

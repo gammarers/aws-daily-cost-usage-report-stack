@@ -1,61 +1,3 @@
-# AWS Daily Cost Usage Reports
-
-AWS Cost And Usage report to Slack on daily 09:01.
-- Report type
-  - Services
-    - This is Cost by AWS Services.
-  - Accounts
-    - This is Cost by Linked Account (when organization master account)
-
-## Resources
-
-This construct creating resource list.
-
-- Lambda function execution role
-- Lambda function
-- EventBridge Scheduler execution role
-- EventBridge Scheduler
-
-## Install
-
-### TypeScript
-
-```shell
-npm install @gammarer/aws-daily-cost-usage-repoter
-# or
-yarn add @gammarer/aws-daily-cost-usage-repoter
-```
-
-### Python
-
-```shell
-pip install gammarer.aws-daily-cost-usage-repoter
-```
-
-## Example
-
-```shell
-npm install @gammarer/aws-daily-cost-usage-repoter
-```
-
-```typescript
-import { CostGroupType, DailyCostUsageReporter } from '@gammarer/aws-daily-cost-usage-repoter';
-
-new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
-  slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx', // already created slack webhook url
-  slackPostChannel: 'example-channel', // already created slack channel
-  costGroupType: CostGroupType.SERVICES,
-});
-
-```
-
-## License
-
-This project is licensed under the Apache-2.0 License.
-
-
-
-
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
@@ -120,7 +62,7 @@ Returns a string representation of this construct.
 
 ---
 
-##### `isConstruct` <a name="isConstruct" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct"></a>
+##### ~~`isConstruct`~~ <a name="isConstruct" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct"></a>
 
 ```typescript
 import { DailyCostUsageReporter } from '@gammarer/aws-daily-cost-usage-reporter'
@@ -129,20 +71,6 @@ DailyCostUsageReporter.isConstruct(x: any)
 ```
 
 Checks if `x` is a construct.
-
-Use this method instead of `instanceof` to properly detect `Construct`
-instances, even when the construct library is symlinked.
-
-Explanation: in JavaScript, multiple copies of the `constructs` library on
-disk are seen as independent, completely different libraries. As a
-consequence, the class `Construct` in each copy of the `constructs` library
-is seen as a different class, and an instance of one class will not test as
-`instanceof` the other class. `npm install` will not create installations
-like this, but users may manually symlink construct libraries together or
-use a monorepo tool: in those cases, multiple copies of the `constructs`
-library can be accidentally installed, and `instanceof` will behave
-unpredictably. It is safest to avoid using `instanceof`, and using
-this type-testing method instead.
 
 ###### `x`<sup>Required</sup> <a name="x" id="@gammarer/aws-daily-cost-usage-reporter.DailyCostUsageReporter.isConstruct.parameter.x"></a>
 
