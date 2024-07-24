@@ -40,10 +40,10 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-sdk/client-cost-explorer": "^3.614.0",
+    "@aws-sdk/client-cost-explorer": "^3.616.0",
     "@gammarer/jest-serializer-aws-cdk-asset-filename-replacer": "^0.4.30",
     "@slack/web-api": "^6.12.0",
-    "@types/aws-lambda": "^8.10.141",
+    "@types/aws-lambda": "^8.10.142",
     "@types/jest": "^29.5.12",
     "@types/node": "^16",
     "@typescript-eslint/eslint-plugin": "^7",
@@ -64,9 +64,9 @@
     "jsii-docgen": "^10.4.19",
     "jsii-pacmak": "^1.101.0",
     "jsii-rosetta": "5.1.x",
-    "projen": "^0.84.5",
+    "projen": "^0.84.9",
     "standard-version": "^9",
-    "ts-jest": "^29.2.2",
+    "ts-jest": "^29.2.3",
     "ts-node": "^10.9.2",
     "typescript": "5.1.x"
   },
@@ -97,9 +97,9 @@
       "<rootDir>/node_modules/@gammarer/jest-serializer-aws-cdk-asset-filename-replacer"
     ],
     "testMatch": [
-      "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+      "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
       "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/@(projenrc)/**/?(*.)+(spec|test).ts?(x)",
+      "<rootDir>/@(projenrc)/**/*(*.)@(spec|test).ts?(x)",
       "<rootDir>/@(projenrc)/**/__tests__/**/*.ts?(x)"
     ],
     "clearMocks": true,
