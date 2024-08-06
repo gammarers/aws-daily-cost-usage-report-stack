@@ -63,6 +63,7 @@ export class DailyCostUsageReporter extends Construct {
         SLACK_CHANNEL: props.slackChannel,
       },
       role: lambdaExecutionRole,
+      timeout: cdk.Duration.seconds(45),
     });
 
     // 👇EventBridge Scheduler IAM Role
