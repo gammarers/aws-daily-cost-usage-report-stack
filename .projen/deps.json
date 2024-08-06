@@ -5,7 +5,8 @@
       "type": "build"
     },
     {
-      "name": "@gammarer/jest-serializer-aws-cdk-asset-filename-replacer",
+      "name": "@gammarers/jest-aws-cdk-asset-filename-renamer",
+      "version": "~0.5.0",
       "type": "build"
     },
     {
