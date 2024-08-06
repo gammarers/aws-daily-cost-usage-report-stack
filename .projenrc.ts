@@ -7,12 +7,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
   typescriptVersion: '5.4.x',
   jsiiVersion: '5.4.x',
   defaultReleaseBranch: 'main',
-  name: '@gammarer/aws-daily-cost-usage-reporter',
+  name: '@gammarers/aws-daily-cost-usage-reporter',
   description: 'Cost & Usage Reports',
   keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports', 'slack'],
   majorVersion: 1,
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/yicr/aws-daily-cost-usage-reporter.git',
+  repositoryUrl: 'https://github.com/gammarers/aws-daily-cost-usage-reporter.git',
   deps: [
   ],
   devDeps: [
