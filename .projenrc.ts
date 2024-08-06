@@ -7,12 +7,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
   typescriptVersion: '5.4.x',
   jsiiVersion: '5.4.x',
   defaultReleaseBranch: 'main',
-  name: '@gammarer/aws-daily-cost-usage-reporter',
+  name: '@gammarers/aws-daily-cost-usage-reporter',
   description: 'Cost & Usage Reports',
   keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports', 'slack'],
   majorVersion: 1,
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/yicr/aws-daily-cost-usage-reporter.git',
+  repositoryUrl: 'https://github.com/gammarers/aws-daily-cost-usage-reporter.git',
   deps: [
   ],
   devDeps: [
@@ -22,11 +22,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@slack/web-api',
     '@types/aws-lambda',
     '@yicr/aws-lambda-errors',
-    '@gammarer/jest-serializer-aws-cdk-asset-filename-replacer',
+    '@gammarers/jest-aws-cdk-asset-filename-renamer@~0.5.0',
   ],
   jestOptions: {
     jestConfig: {
-      snapshotSerializers: ['<rootDir>/node_modules/@gammarer/jest-serializer-aws-cdk-asset-filename-replacer'],
+      snapshotSerializers: ['<rootDir>/node_modules/@gammarers/jest-aws-cdk-asset-filename-renamer'],
     },
     extraCliOptions: ['--silent'],
   },
