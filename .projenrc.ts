@@ -4,8 +4,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorAddress: 'yicr@users.noreply.github.com',
   cdkVersion: '2.80.0',
   constructsVersion: '10.0.5',
-  typescriptVersion: '5.1.x',
-  jsiiVersion: '5.1.x',
+  typescriptVersion: '5.4.x',
+  jsiiVersion: '5.4.x',
   defaultReleaseBranch: 'main',
   name: '@gammarer/aws-daily-cost-usage-reporter',
   description: 'Cost & Usage Reports',
@@ -32,7 +32,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   lambdaOptions: {
     // target node.js runtime
-    runtime: awscdk.LambdaRuntime.NODEJS_18_X,
+    runtime: awscdk.LambdaRuntime.NODEJS_20_X,
     bundlingOptions: {
       // list of node modules to exclude from the bundle
       externals: ['@aws-sdk/client-cost-explorer'],
@@ -42,7 +42,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   releaseToNpm: true,
   npmAccess: javascript.NpmAccess.PUBLIC,
   minNodeVersion: '16.0.0',
-  workflowNodeVersion: '20.11.x',
+  workflowNodeVersion: '22.4.x',
   depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
