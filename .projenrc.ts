@@ -57,11 +57,5 @@ const project = new awscdk.AwsCdkConstructLibrary({
     distName: 'gammarer.aws-daily-cost-usage-reporter',
     module: 'gammarer.aws_daily_cost_usage_reporter',
   },
-  publishToMaven: {
-    mavenGroupId: 'com.gammarer',
-    javaPackage: 'com.gammarer.cdk.aws.daily_cost_usage_reporter',
-    mavenArtifactId: 'aws-daily-cost-usage-reporter',
-    mavenEndpoint: 'https://s01.oss.sonatype.org',
-  },
 });
 project.synth();
