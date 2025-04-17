@@ -49,7 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "@yicr/aws-lambda-errors": "^0.2.313",
-    "aws-cdk-lib": "2.80.0",
+    "aws-cdk-lib": "2.189.1",
     "aws-sdk-client-mock": "^2.2.0",
     "aws-sdk-client-mock-jest": "^2.2.0",
     "commit-and-tag-version": "^12",
@@ -71,7 +71,7 @@
     "typescript": "5.7.x"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.80.0",
+    "aws-cdk-lib": "^2.189.1",
     "constructs": "^10.0.5"
   },
   "keywords": [
