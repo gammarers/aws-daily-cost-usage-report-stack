@@ -1,9 +1,9 @@
 {
-  "name": "@gammarers/aws-daily-cost-usage-reporter",
+  "name": "@gammarers/aws-daily-cost-usage-report-stack",
   "description": "Cost & Usage Reports",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gammarers/aws-daily-cost-usage-reporter.git"
+    "url": "https://github.com/gammarers/aws-daily-cost-usage-report-stack.git"
   },
   "scripts": {
     "build": "npx projen build",
