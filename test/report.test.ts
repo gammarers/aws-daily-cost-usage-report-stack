@@ -1,19 +1,14 @@
-import { App, Stack } from 'aws-cdk-lib';
+import { App } from 'aws-cdk-lib';
 import { Match, Template } from 'aws-cdk-lib/assertions';
-import { CostGroupType, DailyCostUsageReporter } from '../src';
+import { CostGroupType, DailyCostUsageReportStack } from '../src';
 
 describe('CostUsageReports Construct Testing', () => {
 
   describe('CostUsageReport Construct Normal(only required arguments) Testing', () => {
-    const app = new App();
-    const stack = new Stack(app, 'TestingStack', {
-      env: {
-        account: '123456789012',
-        region: 'us-east-1',
-      },
-    });
 
-    new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
+    const app = new App();
+
+    const stack = new DailyCostUsageReportStack(app, 'DailyCostUsageReportStack', {
       slackToken: 'xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX',
       slackChannel: 'example-channel',
       costGroupType: CostGroupType.SERVICES,
@@ -90,7 +85,7 @@ describe('CostUsageReports Construct Testing', () => {
           },
           Role: {
             'Fn::GetAtt': [
-              Match.stringLikeRegexp('DailyCostUsageReporterLambdaExecutionRole.*'),
+              Match.stringLikeRegexp('LambdaExecutionRole'),
               'Arn',
             ],
           },
@@ -112,13 +107,13 @@ describe('CostUsageReports Construct Testing', () => {
         Target: Match.objectEquals({
           Arn: {
             'Fn::GetAtt': [
-              Match.stringLikeRegexp('DailyCostUsageReporterCostReporterFunction.*'),
+              Match.stringLikeRegexp('CostReporterFunction'),
               'Arn',
             ],
           },
           RoleArn: {
             'Fn::GetAtt': [
-              Match.stringLikeRegexp('DailyCostUsageReporterSchedulerExecutionRole.*'),
+              Match.stringLikeRegexp('SchedulerExecutionRole'),
               'Arn',
             ],
           },
@@ -138,15 +133,10 @@ describe('CostUsageReports Construct Testing', () => {
   });
 
   describe('CostUsageReport Construct Normal(all arguments) Testing', () => {
-    const app = new App();
-    const stack = new Stack(app, 'TestingStack', {
-      env: {
-        account: '123456789012',
-        region: 'us-east-1',
-      },
-    });
 
-    new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
+    const app = new App();
+
+    const stack = new DailyCostUsageReportStack(app, 'DailyCostUsageReportStack', {
       costGroupType: CostGroupType.SERVICES,
       slackToken: 'xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX',
       slackChannel: 'example-channel',
@@ -168,13 +158,13 @@ describe('CostUsageReports Construct Testing', () => {
         Target: Match.objectEquals({
           Arn: {
             'Fn::GetAtt': [
-              Match.stringLikeRegexp('DailyCostUsageReporterCostReporterFunction.*'),
+              Match.stringLikeRegexp('CostReporterFunction.'),
               'Arn',
             ],
           },
           RoleArn: {
             'Fn::GetAtt': [
-              Match.stringLikeRegexp('DailyCostUsageReporterSchedulerExecutionRole.*'),
+              Match.stringLikeRegexp('SchedulerExecutionRole.*'),
               'Arn',
             ],
           },
