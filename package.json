@@ -1,9 +1,9 @@
 {
-  "name": "@gammarers/aws-daily-cost-usage-reporter",
+  "name": "@gammarers/aws-daily-cost-usage-report-stack",
   "description": "Cost & Usage Reports",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gammarers/aws-daily-cost-usage-reporter.git"
+    "url": "https://github.com/gammarers/aws-daily-cost-usage-report-stack.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -49,7 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "@yicr/aws-lambda-errors": "^0.2.313",
-    "aws-cdk-lib": "2.80.0",
+    "aws-cdk-lib": "2.189.1",
     "aws-sdk-client-mock": "^2.2.0",
     "aws-sdk-client-mock-jest": "^2.2.0",
     "commit-and-tag-version": "^12",
@@ -60,18 +60,18 @@
     "eslint-plugin-import": "^2.31.0",
     "jest": "^29.7.0",
     "jest-junit": "^16",
-    "jsii": "5.4.x",
+    "jsii": "5.7.x",
     "jsii-diff": "^1.111.0",
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.111.0",
-    "jsii-rosetta": "5.4.x",
+    "jsii-rosetta": "5.7.x",
     "projen": "^0.91.20",
     "ts-jest": "^29.3.2",
     "ts-node": "^10.9.2",
-    "typescript": "5.4.x"
+    "typescript": "5.7.x"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.80.0",
+    "aws-cdk-lib": "^2.189.1",
     "constructs": "^10.0.5"
   },
   "keywords": [
@@ -145,8 +145,8 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "gammarer.aws-daily-cost-usage-reporter",
-        "module": "gammarer.aws_daily_cost_usage_reporter"
+        "distName": "gammarers.aws-daily-cost-usage-report-stack",
+        "module": "gammarers.aws_daily_cost_usage_report-stack"
       }
     },
     "tsc": {

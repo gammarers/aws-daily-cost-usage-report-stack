@@ -1,4 +1,4 @@
-# AWS Daily Cost Usage Reports
+# AWS Daily Cost Usage Report Stack
 
 AWS Cost And Usage report to Slack on daily 09:01.
 - Report type
@@ -20,30 +20,36 @@ This construct creating resource list.
 
 ### TypeScript
 
+#### use by npm
+
 ```shell
-npm install @gammarer/aws-daily-cost-usage-repoter
-# or
-yarn add @gammarer/aws-daily-cost-usage-repoter
+npm install @gammarers/aws-daily-cost-usage-report-stack
+```
+
+#### use by yarn
+
+```shell
+yarn add @gammarers/aws-daily-cost-usage-report-stack
 ```
 
 ### Python
 
 ```shell
-pip install gammarer.aws-daily-cost-usage-repoter
+pip install gammarers.aws-daily-cost-usage-report-stack
 ```
 
 ## Example
 
 ```shell
-npm install @gammarer/aws-daily-cost-usage-repoter
+npm install @gammarers/aws-daily-cost-usage-report-stack
 ```
 
 ```typescript
-import { CostGroupType, DailyCostUsageReporter } from '@gammarer/aws-daily-cost-usage-repoter';
+import { CostGroupType, DailyCostUsageReportStack } from '@gammarer/aws-daily-cost-usage-report-stack';
 
-new DailyCostUsageReporter(stack, 'DailyCostUsageReporter', {
-  slackWebhookUrl: 'https://hooks.slack.com/services/xxxxxxxxxx', // already created slack webhook url
-  slackPostChannel: 'example-channel', // already created slack channel
+new DailyCostUsageReportStack(app, 'DailyCostUsageReportStack', {
+  slackToken: 'xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX',
+  slackChannel: 'example-channel',
   costGroupType: CostGroupType.SERVICES,
 });
 

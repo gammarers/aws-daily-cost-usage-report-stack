@@ -2,17 +2,16 @@ import { awscdk, javascript } from 'projen';
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'yicr',
   authorAddress: 'yicr@users.noreply.github.com',
-  cdkVersion: '2.80.0',
-  constructsVersion: '10.0.5',
-  typescriptVersion: '5.4.x',
-  jsiiVersion: '5.4.x',
+  cdkVersion: '2.189.1',
+  typescriptVersion: '5.7.x',
+  jsiiVersion: '5.7.x',
   defaultReleaseBranch: 'main',
-  name: '@gammarers/aws-daily-cost-usage-reporter',
+  name: '@gammarers/aws-daily-cost-usage-report-stack',
   description: 'Cost & Usage Reports',
   keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports', 'slack'],
-  majorVersion: 1,
+  majorVersion: 2,
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/gammarers/aws-daily-cost-usage-reporter.git',
+  repositoryUrl: 'https://github.com/gammarers/aws-daily-cost-usage-report-stack.git',
   deps: [
   ],
   devDeps: [
@@ -42,11 +41,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
   releaseToNpm: true,
   npmAccess: javascript.NpmAccess.PUBLIC,
   minNodeVersion: '16.0.0',
-  workflowNodeVersion: '22.4.x',
+  workflowNodeVersion: '22.x',
   depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve', 'auto-merge'],
-      schedule: javascript.UpgradeDependenciesSchedule.expressions(['0 19 * * 3']), // every wednesday 19:00 (JST/THU:0400)
+      schedule: javascript.UpgradeDependenciesSchedule.expressions(['3 19 * * 3']), // every wednesday 19:00 (JST/THU:0400)
     },
   },
   autoApproveOptions: {
@@ -54,8 +53,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     allowedUsernames: ['yicr'],
   },
   publishToPypi: {
-    distName: 'gammarer.aws-daily-cost-usage-reporter',
-    module: 'gammarer.aws_daily_cost_usage_reporter',
+    distName: 'gammarers.aws-daily-cost-usage-report-stack',
+    module: 'gammarers.aws_daily_cost_usage_report-stack',
   },
 });
 project.synth();
