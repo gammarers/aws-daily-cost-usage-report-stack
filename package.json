@@ -145,8 +145,8 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "gammarer.aws-daily-cost-usage-reporter",
-        "module": "gammarer.aws_daily_cost_usage_reporter"
+        "distName": "gammarers.aws-daily-cost-usage-report-stack",
+        "module": "gammarers.aws_daily_cost_usage_report-stack"
       }
     },
     "tsc": {

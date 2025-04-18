@@ -53,8 +53,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     allowedUsernames: ['yicr'],
   },
   publishToPypi: {
-    distName: 'gammarer.aws-daily-cost-usage-reporter',
-    module: 'gammarer.aws_daily_cost_usage_reporter',
+    distName: 'gammarers.aws-daily-cost-usage-report-stack',
+    module: 'gammarers.aws_daily_cost_usage_report-stack',
   },
 });
 project.synth();
