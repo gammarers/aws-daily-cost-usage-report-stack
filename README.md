@@ -23,29 +23,29 @@ This construct creating resource list.
 #### use by npm
 
 ```shell
-npm install @gammarers/aws-daily-cost-usage-repote-stack
+npm install @gammarers/aws-daily-cost-usage-report-stack
 ```
 
 #### use by yarn
 
 ```shell
-yarn add @gammarers/aws-daily-cost-usage-repote-stack
+yarn add @gammarers/aws-daily-cost-usage-report-stack
 ```
 
 ### Python
 
 ```shell
-pip install gammarer.aws-daily-cost-usage-repote-stack
+pip install gammarers.aws-daily-cost-usage-report-stack
 ```
 
 ## Example
 
 ```shell
-npm install @gammarers/aws-daily-cost-usage-repote-stack
+npm install @gammarers/aws-daily-cost-usage-report-stack
 ```
 
 ```typescript
-import { CostGroupType, DailyCostUsageReportStack } from '@gammarer/aws-daily-cost-usage-repote-stack';
+import { CostGroupType, DailyCostUsageReportStack } from '@gammarer/aws-daily-cost-usage-report-stack';
 
 new DailyCostUsageReportStack(app, 'DailyCostUsageReportStack', {
   slackToken: 'xoxb-11111111111-XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXX',
