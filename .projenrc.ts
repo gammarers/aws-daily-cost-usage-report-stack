@@ -9,7 +9,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: '@gammarers/aws-daily-cost-usage-report-stack',
   description: 'Cost & Usage Reports',
   keywords: ['aws', 'cdk', 'aws-cdk', 'cost', 'reports', 'slack'],
-  majorVersion: 1,
+  majorVersion: 2,
   projenrcTs: true,
   repositoryUrl: 'https://github.com/gammarers/aws-daily-cost-usage-report-stack.git',
   deps: [
